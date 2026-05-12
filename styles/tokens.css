@@ -1,0 +1,47 @@
+:root {
+  /* Background layers */
+  --color-bg-deep:    #040d09;
+  --color-bg-base:    #0d1f1a;
+  --color-bg-raised:  #122b23;
+  --color-bg-card:    #0f2620;
+
+  /* Emerald primary */
+  --color-emerald:        #00c870;
+  --color-emerald-bright: #00ff8a;
+  --color-emerald-dim:    #1a5c3a;
+  --color-emerald-glow:   rgba(0, 200, 112, 0.25);
+  --color-emerald-glow-sm: rgba(0, 200, 112, 0.15);
+
+  /* Metal tones */
+  --color-metal-light: #64a082;
+  --color-metal-mid:   #3a6652;
+  --color-metal-dark:  #1e3d2f;
+
+  /* Text */
+  --color-text-primary:   #e0f5ec;
+  --color-text-secondary: #7db89a;
+  --color-text-muted:     #3d6b55;
+
+  /* Glass effects */
+  --glass-bg:     rgba(13, 31, 26, 0.65);
+  --glass-border: rgba(0, 200, 112, 0.15);
+  --glass-blur:   12px;
+
+  /* Metal gradient */
+  --metal-bg: linear-gradient(135deg, #1a2e28 0%, #0d1f1a 50%, #243b33 100%);
+  --metal-border: rgba(100, 160, 130, 0.3);
+
+  /* Typography */
+  --font-display: 'Rajdhani', 'Share Tech Mono', monospace;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-code:    'Share Tech Mono', monospace;
+
+  /* Spacing */
+  --radius-card: 12px;
+  --radius-btn:  6px;
+
+  /* Glow shadows */
+  --glow-emerald-sm: 0 0 10px rgba(0, 200, 112, 0.3);
+  --glow-emerald-md: 0 0 20px rgba(0, 200, 112, 0.4), 0 0 40px rgba(0, 200, 112, 0.2);
+  --glow-emerald-lg: 0 0 30px rgba(0, 200, 112, 0.5), 0 0 60px rgba(0, 200, 112, 0.3), 0 0 90px rgba(0, 200, 112, 0.1);
+}

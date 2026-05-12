@@ -1,0 +1,120 @@
+@import './tokens.css';
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg-deep);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-emerald-dim);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-emerald);
+}
+
+/* Selection */
+::selection {
+  background: rgba(0, 200, 112, 0.3);
+  color: var(--color-text-primary);
+}
+
+/* Glass card utility */
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-radius: var(--radius-card);
+}
+
+/* Metal button utility */
+.metal-btn {
+  background: var(--metal-bg);
+  border: 1px solid var(--metal-border);
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.metal-btn:hover {
+  border-color: var(--color-emerald);
+  box-shadow: var(--glow-emerald-sm);
+}
+
+/* Emerald glow text */
+.glow-text {
+  color: var(--color-emerald);
+  text-shadow: 0 0 10px rgba(0, 200, 112, 0.5), 0 0 20px rgba(0, 200, 112, 0.3);
+}
+
+/* Metal grid texture overlay */
+.metal-grid {
+  background-image:
+    linear-gradient(rgba(0, 200, 112, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 200, 112, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Engraved code pattern */
+.code-texture {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 200, 112, 0.02) 2px,
+    rgba(0, 200, 112, 0.02) 4px
+  );
+}
+
+/* Stat bar fill animation */
+@keyframes statFill {
+  from { width: 0%; }
+  to   { width: var(--fill-width); }
+}
+
+/* Mana pulse */
+@keyframes manaPulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.05); }
+}
+
+/* Rune spin */
+@keyframes runeSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Gate chain swing */
+@keyframes chainSwing {
+  0%, 100% { transform: rotate(-3deg); }
+  50%       { transform: rotate(3deg); }
+}
+
+/* Particle float */
+@keyframes particleRise {
+  0%   { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-80px) scale(0.3); }
+}
