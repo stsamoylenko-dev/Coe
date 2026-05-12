@@ -1,7 +1,5 @@
 'use client'
 
-import { useEffect } from 'react'
-import { useRouter } from 'next/navigation'
 import { useTonAddress } from '@tonconnect/ui-react'
 import AppShell from '@/components/layout/AppShell'
 import WorldMap from '@/components/map/WorldMap'
@@ -9,17 +7,14 @@ import GlassCard from '@/components/ui/GlassCard'
 import LoadingRune from '@/components/ui/LoadingRune'
 import { useDomainsStore } from '@/store/domainsStore'
 import { useWarriorStore } from '@/store/warriorStore'
+import { useDemoStore } from '@/store/demoStore'
 import { MAP_CONFIG } from '@/lib/constants'
 
 export default function MapPage() {
   const address = useTonAddress()
-  const router  = useRouter()
+  const isDemo  = useDemoStore(s => s.isDemo)
   const { loading, data: domains } = useDomainsStore()
   const { warrior } = useWarriorStore()
-
-  useEffect(() => {
-    if (!address) router.push('/')
-  }, [address, router])
 
   const ownedDomains = domains?.domains.map(d => ({
     label:  d.label,

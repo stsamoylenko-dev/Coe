@@ -1,47 +1,102 @@
 'use client'
 
-import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { useTonAddress } from '@tonconnect/ui-react'
+import { useTonAddress, useTonConnectUI } from '@tonconnect/ui-react'
 import AppShell from '@/components/layout/AppShell'
 import WarriorCard from '@/components/warrior/WarriorCard'
 import LoadingRune from '@/components/ui/LoadingRune'
 import GlassCard from '@/components/ui/GlassCard'
 import { useDomainsStore } from '@/store/domainsStore'
 import { useWarriorStore } from '@/store/warriorStore'
+import { useDemoStore } from '@/store/demoStore'
+import { DEMO_DOMAINS } from '@/store/demoStore'
+
+function NoWalletPrompt() {
+  const [tonUI]    = useTonConnectUI()
+  const loadDemo   = useDemoStore(s => s.loadDemo)
+
+  function handleDemo() {
+    const warrior = loadDemo()
+    useWarriorStore.setState({ warrior })
+    useDomainsStore.setState({ data: DEMO_DOMAINS, loading: false, error: null })
+  }
+
+  return (
+    <GlassCard className="p-10 text-center max-w-md mx-auto">
+      <div className="font-mono text-5xl mb-4 opacity-30">⚔</div>
+      <h2 className="font-display text-xl font-bold text-[var(--color-text-primary)] mb-3">
+        Кошелёк не подключён
+      </h2>
+      <p className="font-body text-sm text-[var(--color-text-secondary)] leading-relaxed mb-6">
+        Подключи TON-кошелёк чтобы пробудить своего воина,
+        или запусти демо с тестовым персонажем.
+      </p>
+      <div className="flex flex-col gap-3">
+        <button
+          onClick={() => tonUI.openModal()}
+          className="metal-btn w-full py-3 font-display font-semibold tracking-widest uppercase text-sm
+            text-[var(--color-emerald)] border border-[var(--color-emerald-dim)]
+            hover:border-[var(--color-emerald)] hover:shadow-[var(--glow-emerald-sm)]
+            transition-all duration-200"
+        >
+          ⚔ Подключить кошелёк
+        </button>
+        <button
+          onClick={handleDemo}
+          className="w-full py-3 font-mono text-sm tracking-widest uppercase
+            text-[var(--color-text-muted)] border border-[var(--color-metal-mid)] rounded
+            hover:text-[var(--color-emerald)] hover:border-[var(--color-emerald-dim)]
+            transition-all duration-200"
+        >
+          ◈ Демо-режим (1221.ton)
+        </button>
+      </div>
+    </GlassCard>
+  )
+}
 
 export default function DashboardPage() {
   const address  = useTonAddress()
-  const router   = useRouter()
+  const isDemo   = useDemoStore(s => s.isDemo)
   const { loading, error, data: domains } = useDomainsStore()
   const { warrior }                       = useWarriorStore()
 
-  useEffect(() => {
-    if (!address) router.push('/')
-  }, [address, router])
+  const hasAccess = !!address || isDemo
 
   return (
     <AppShell>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
         {/* Page title */}
-        <div className="mb-8">
-          <div className="font-mono text-[10px] tracking-widest text-[var(--color-text-muted)] uppercase mb-1">
-            Шаг 2: Пробуждение · Bind
+        <div className="mb-8 flex items-center justify-between">
+          <div>
+            <div className="font-mono text-[10px] tracking-widest text-[var(--color-text-muted)] uppercase mb-1">
+              Шаг 2: Пробуждение · Bind
+            </div>
+            <h1 className="font-display text-3xl font-bold text-[var(--color-text-primary)]">
+              Дашборд Воина
+            </h1>
           </div>
-          <h1 className="font-display text-3xl font-bold text-[var(--color-text-primary)]">
-            Дашборд Воина
-          </h1>
+          {isDemo && !address && (
+            <span className="px-3 py-1 font-mono text-xs tracking-widest uppercase
+              border border-[var(--color-emerald-dim)] text-[var(--color-emerald)] rounded
+              bg-[var(--color-emerald-glow-sm)]">
+              ◈ Демо-режим
+            </span>
+          )}
         </div>
 
-        {/* Loading state */}
+        {/* No access */}
+        {!hasAccess && !loading && <NoWalletPrompt />}
+
+        {/* Loading */}
         {loading && (
           <div className="flex flex-col items-center justify-center py-32 gap-6">
             <LoadingRune size={64} label="Считываем ДНК из блокчейна..." />
           </div>
         )}
 
-        {/* Error state */}
-        {!loading && error && (
+        {/* Error */}
+        {hasAccess && !loading && error && (
           <GlassCard className="p-8 text-center max-w-md mx-auto">
             <div className="text-red-400 text-2xl mb-3">⚠</div>
             <p className="font-mono text-sm text-red-400 mb-2">Ошибка связи с блокчейном</p>
@@ -58,7 +113,7 @@ export default function DashboardPage() {
         )}
 
         {/* No 4N domain */}
-        {!loading && !error && domains && !warrior && (
+        {hasAccess && !loading && !error && domains && !warrior && (
           <GlassCard className="p-10 text-center max-w-md mx-auto">
             <div className="font-mono text-5xl mb-4 opacity-30">◌</div>
             <h2 className="font-display text-xl font-bold text-[var(--color-text-primary)] mb-3">
@@ -75,9 +130,7 @@ export default function DashboardPage() {
         )}
 
         {/* Warrior card */}
-        {!loading && !error && warrior && (
-          <WarriorCard warrior={warrior} />
-        )}
+        {warrior && <WarriorCard warrior={warrior} />}
       </div>
     </AppShell>
   )

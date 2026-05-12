@@ -5,14 +5,27 @@ import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import ConnectButton from '@/components/wallet/ConnectButton'
 import GlowText from '@/components/ui/GlowText'
+import { useDemoStore } from '@/store/demoStore'
+import { useWarriorStore } from '@/store/warriorStore'
+import { useDomainsStore } from '@/store/domainsStore'
+import { DEMO_DOMAINS } from '@/store/demoStore'
 
 export default function LandingPage() {
-  const address = useTonAddress()
-  const router  = useRouter()
+  const address  = useTonAddress()
+  const router   = useRouter()
+  const loadDemo = useDemoStore(s => s.loadDemo)
+  const setWarrior = useWarriorStore.getState
 
   useEffect(() => {
     if (address) router.push('/dashboard')
   }, [address, router])
+
+  function handleDemo() {
+    const warrior = loadDemo()
+    useWarriorStore.setState({ warrior })
+    useDomainsStore.setState({ data: DEMO_DOMAINS, loading: false, error: null })
+    router.push('/dashboard')
+  }
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center metal-grid overflow-hidden">
@@ -30,10 +43,7 @@ export default function LandingPage() {
           <div className="font-mono text-sm tracking-[0.4em] text-[var(--color-text-muted)] uppercase mb-4">
             Web3 · TON Blockchain · Metaverse
           </div>
-          <GlowText
-            as="h1"
-            className="font-display text-6xl sm:text-8xl font-bold tracking-tight"
-          >
+          <GlowText as="h1" className="font-display text-6xl sm:text-8xl font-bold tracking-tight">
             КОД ВЕЧНОСТИ
           </GlowText>
           <div className="font-display text-3xl sm:text-5xl font-light tracking-[0.3em] text-[var(--color-metal-light)]">
@@ -57,8 +67,19 @@ export default function LandingPage() {
           ))}
         </div>
 
-        {/* CTA */}
-        <ConnectButton />
+        {/* CTAs */}
+        <div className="flex flex-col items-center gap-4">
+          <ConnectButton />
+          <button
+            onClick={handleDemo}
+            className="px-8 py-3 font-mono text-sm tracking-widest uppercase
+              text-[var(--color-text-muted)] border border-[var(--color-metal-mid)] rounded
+              hover:text-[var(--color-emerald)] hover:border-[var(--color-emerald-dim)]
+              transition-all duration-200"
+          >
+            ◈ Посмотреть демо
+          </button>
+        </div>
 
         {/* Lore */}
         <p className="max-w-xs font-mono text-xs text-[var(--color-text-muted)] leading-relaxed">
@@ -68,10 +89,8 @@ export default function LandingPage() {
         </p>
       </div>
 
-      {/* Bottom grid lines */}
-      <div className="absolute bottom-0 left-0 right-0 h-32
-        bg-[linear-gradient(transparent,var(--color-bg-deep))]
-        pointer-events-none" />
+      {/* Bottom gradient */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-[linear-gradient(transparent,var(--color-bg-deep))] pointer-events-none" />
     </div>
   )
 }
