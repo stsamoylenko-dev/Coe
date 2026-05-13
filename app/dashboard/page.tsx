@@ -1,9 +1,10 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
 import { useTonAddress, useTonConnectUI } from '@tonconnect/ui-react'
 import AppShell from '@/components/layout/AppShell'
 import WarriorCard from '@/components/warrior/WarriorCard'
+import FigurineView from '@/components/warrior/FigurineView'
+import StickerPackPanel from '@/components/warrior/StickerPackPanel'
 import LoadingRune from '@/components/ui/LoadingRune'
 import GlassCard from '@/components/ui/GlassCard'
 import { useDomainsStore } from '@/store/domainsStore'
@@ -129,8 +130,38 @@ export default function DashboardPage() {
           </GlassCard>
         )}
 
-        {/* Warrior card */}
-        {warrior && <WarriorCard warrior={warrior} />}
+        {/* Warrior card + figurine + sticker pack */}
+        {warrior && (
+          <div className="space-y-8">
+            {/* Main row: card + figurine */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+              <WarriorCard warrior={warrior} />
+
+              {/* Figurine section */}
+              <GlassCard className="p-6 flex flex-col items-center gap-4">
+                <div>
+                  <div className="font-mono text-[10px] tracking-widest text-[var(--color-text-muted)] uppercase mb-1 text-center">
+                    Облик воина · Figurine
+                  </div>
+                  <h2 className="font-display text-lg font-bold text-[var(--color-text-primary)] text-center">
+                    {warrior.primaryDomain}
+                  </h2>
+                </div>
+                <FigurineView
+                  warrior={warrior}
+                  allDomains={domains?.domains ?? []}
+                  className="w-full max-w-[320px] rounded-xl border border-[var(--color-emerald-dim)]"
+                />
+              </GlassCard>
+            </div>
+
+            {/* Sticker pack section */}
+            <StickerPackPanel
+              warrior={warrior}
+              allDomains={domains?.domains ?? []}
+            />
+          </div>
+        )}
       </div>
     </AppShell>
   )
