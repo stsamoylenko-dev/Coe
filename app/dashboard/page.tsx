@@ -11,6 +11,7 @@ import { useDomainsStore } from '@/store/domainsStore'
 import { useWarriorStore } from '@/store/warriorStore'
 import { useDemoStore } from '@/store/demoStore'
 import { DEMO_DOMAINS } from '@/store/demoStore'
+import DnsTxtPanel from '@/components/domains/DnsTxtPanel'
 
 function NoWalletPrompt() {
   const [tonUI]    = useTonConnectUI()
@@ -160,6 +161,11 @@ export default function DashboardPage() {
               warrior={warrior}
               allDomains={domains?.domains ?? []}
             />
+
+            {/* DNS TXT records */}
+            {domains && domains.domains.length > 0 && (
+              <DnsTxtPanel domains={domains.domains} />
+            )}
           </div>
         )}
       </div>

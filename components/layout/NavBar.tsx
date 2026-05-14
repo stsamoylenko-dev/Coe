@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { href: '/dashboard', label: 'Воин',  icon: '⚔' },
   { href: '/map',       label: 'Карта', icon: '◎' },
   { href: '/arena',     label: 'Арена', icon: '🔒' },
+  { href: '/agent',     label: 'Агент', icon: '🤖' },
 ]
 
 export default function NavBar() {
