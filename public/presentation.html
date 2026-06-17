@@ -2,1415 +2,982 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Инвестиции в недвижимость на Бали — Александр Дормидонов</title>
+<title>Бали. Недвижимость. Честно. — Александр Дормидонов</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+*{margin:0;padding:0;box-sizing:border-box;}
 
-body {
-  background: #0D0D0D;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  overflow: hidden;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+body{
+  background:#0A0A0A;
+  display:flex;justify-content:center;align-items:center;
+  height:100vh;overflow:hidden;
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
 }
 
-.presentation-wrapper {
-  position: relative;
-  transform-origin: top left;
+.pw{position:relative;transform-origin:top left;}
+
+.pres{
+  width:1920px;height:1080px;
+  position:relative;overflow:hidden;
 }
 
-.presentation {
-  width: 1920px;
-  height: 1080px;
-  position: relative;
-  overflow: hidden;
+/* ── SLIDE ── */
+.s{
+  width:1920px;height:1080px;
+  position:absolute;top:0;left:0;
+  display:none;flex-direction:row;
 }
+.s.on{display:flex;}
 
-/* ── SLIDE BASE ── */
-.slide {
-  width: 1920px;
-  height: 1080px;
-  position: absolute;
-  top: 0; left: 0;
-  display: none;
-  flex-direction: row;
+/* ── LEFT CONTENT ── */
+.c{
+  width:1312px;height:1080px;
+  padding:100px 120px;
+  display:flex;flex-direction:column;justify-content:center;
+  background:#FFFFFF;position:relative;overflow:hidden;
 }
-.slide.active { display: flex; }
+.c.bk{background:#000000;}
+.c.gr{background:#F4F4F4;}
 
-/* ── LEFT CONTENT AREA ── */
-.sc {
-  width: 1312px;
-  height: 1080px;
-  padding: 90px 110px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  background: #F9F7F4;
-}
-.sc.dark {
-  background: #111111;
-}
-.sc.cream {
-  background: #F9F7F4;
-}
-.sc.white {
-  background: #FFFFFF;
-}
-
-/* ── RIGHT PANEL (9:16 = 607.5px wide at 1080px tall) ── */
-.sp {
-  width: 608px;
-  height: 1080px;
-  background: #0D0D0D;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 80px 56px;
-  position: relative;
-  flex-shrink: 0;
-  overflow: hidden;
-}
-.sp.gold { background: #C8A96E; }
-.sp.dark { background: #0D0D0D; }
+/* ── RIGHT BLACK PANEL — empty ── */
+.r{width:608px;height:1080px;background:#000000;flex-shrink:0;}
 
 /* ── TYPOGRAPHY ── */
-.tag {
-  font-size: 13px;
-  font-weight: 700;
-  color: #C8A96E;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  margin-bottom: 28px;
+.eyebrow{
+  font-size:11px;font-weight:600;color:#AAAAAA;
+  letter-spacing:5px;text-transform:uppercase;
+  margin-bottom:36px;
 }
-.tag.white-tag { color: rgba(255,255,255,0.5); }
+.eyebrow.wh{color:rgba(255,255,255,0.3);}
 
-.num-label {
-  font-size: 13px;
-  font-weight: 600;
-  color: #BBBBBB;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  margin-bottom: 36px;
+.h1{
+  font-size:112px;font-weight:900;line-height:.88;
+  color:#000;text-transform:uppercase;
+  letter-spacing:-3px;margin-bottom:44px;
 }
+.h1.wh{color:#fff;}
+.h1.lg{font-size:96px;}
+.h1.md{font-size:72px;letter-spacing:-2px;}
+.h1.sm{font-size:56px;letter-spacing:-1.5px;}
 
-.headline {
-  font-size: 72px;
-  font-weight: 800;
-  line-height: 1.06;
-  color: #141414;
-  letter-spacing: -1.5px;
-  margin-bottom: 40px;
+.lead{
+  font-size:26px;font-weight:400;line-height:1.6;
+  color:#666;max-width:960px;
 }
-.headline.xl { font-size: 96px; letter-spacing: -2px; }
-.headline.xxl { font-size: 120px; letter-spacing: -3px; }
-.headline.md { font-size: 56px; letter-spacing: -1px; }
-.headline.white { color: #FFFFFF; }
+.lead.wh{color:rgba(255,255,255,0.55);}
+.lead b{color:#000;font-weight:700;}
+.lead.wh b{color:#fff;}
+.lead.lg{font-size:30px;}
 
-.body {
-  font-size: 27px;
-  font-weight: 400;
-  line-height: 1.55;
-  color: #555555;
-  max-width: 980px;
-}
-.body.white { color: rgba(255,255,255,0.65); }
-.body strong { color: #141414; font-weight: 700; }
-.body.white strong { color: #FFFFFF; }
+/* line dividers */
+.ln{width:100%;height:1px;background:#E0E0E0;margin:36px 0;}
+.ln.bk{background:rgba(255,255,255,0.12);}
+.ln.bold{height:2px;background:#000;margin-bottom:44px;}
+.ln.short{width:64px;height:2px;background:#000;margin-bottom:44px;}
+.ln.short.wh{background:#fff;}
 
-.divider {
-  width: 64px;
-  height: 3px;
-  background: #C8A96E;
-  margin-bottom: 40px;
-  flex-shrink: 0;
+/* ── QUOTE VARIANT ── */
+.qblock{
+  border-left:3px solid #000;
+  padding-left:44px;margin-top:36px;
 }
+.qblock p{
+  font-size:44px;font-weight:800;line-height:1.05;
+  color:#000;text-transform:uppercase;letter-spacing:-1px;
+}
+.qblock.wh{border-left-color:rgba(255,255,255,0.35);}
+.qblock.wh p{color:#fff;}
 
-/* ── PANEL ELEMENTS ── */
-.p-label {
-  font-size: 11px;
-  font-weight: 700;
-  color: rgba(255,255,255,0.3);
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  margin-bottom: 32px;
-  text-align: center;
+/* ── STAT BARS (sevensky style) ── */
+.stats{display:flex;flex-direction:column;gap:28px;margin-top:8px;}
+.stat{}
+.stat-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;}
+.stat-name{
+  font-size:13px;font-weight:600;color:#888;
+  text-transform:uppercase;letter-spacing:3px;
 }
-.p-label.dark-label { color: rgba(0,0,0,0.35); }
+.stat-val{
+  font-size:32px;font-weight:900;color:#000;letter-spacing:-1px;line-height:1;
+}
+.track{width:100%;height:3px;background:#EBEBEB;}
+.fill{height:3px;background:#000;}
 
-.p-quote {
-  font-size: 34px;
-  font-weight: 700;
-  color: #FFFFFF;
-  line-height: 1.35;
-  text-align: center;
+/* ── SCORE CIRCLE ── */
+.score-wrap{display:flex;align-items:center;gap:48px;margin-bottom:40px;}
+.circle{
+  width:140px;height:140px;
+  border:5px solid #000;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  flex-shrink:0;
 }
-.p-quote.dark-text { color: #141414; }
-.p-quote.lg { font-size: 44px; }
-.p-quote.sm { font-size: 26px; }
-
-.p-accent {
-  font-size: 18px;
-  font-weight: 500;
-  color: #C8A96E;
-  text-align: center;
-  margin-top: 36px;
-  line-height: 1.5;
-}
-.p-accent.dark-text { color: rgba(0,0,0,0.55); }
-
-.p-big {
-  font-size: 200px;
-  font-weight: 900;
-  color: rgba(255,255,255,0.04);
-  line-height: 1;
-  position: absolute;
-  bottom: 40px;
-  right: -10px;
-  letter-spacing: -8px;
-}
-.p-big.gold-text { color: rgba(0,0,0,0.07); }
-
-/* ── LISTS ── */
-.sl {
-  list-style: none;
-  margin-top: 10px;
-}
-.sl li {
-  font-size: 27px;
-  color: #444;
-  padding: 18px 0;
-  border-bottom: 1px solid rgba(0,0,0,0.07);
-  display: flex;
-  align-items: flex-start;
-  gap: 22px;
-  line-height: 1.45;
-}
-.sl li::before {
-  content: '—';
-  color: #C8A96E;
-  font-weight: 800;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-.sl.white-list li {
-  color: rgba(255,255,255,0.7);
-  border-bottom: 1px solid rgba(255,255,255,0.07);
-}
-.sl.white-list li::before { color: #C8A96E; }
-
-/* ── HIGHLIGHT BOX ── */
-.hbox {
-  background: #F0EBE0;
-  border-left: 4px solid #C8A96E;
-  padding: 32px 44px;
-  margin-top: 32px;
-  border-radius: 0 8px 8px 0;
-}
-.hbox.dark-hbox {
-  background: rgba(200,169,110,0.12);
-  border-left-color: #C8A96E;
-}
-.hbox p {
-  font-size: 27px;
-  color: #141414;
-  line-height: 1.5;
-  font-weight: 500;
-}
-.hbox.dark-hbox p { color: rgba(255,255,255,0.85); }
+.circle-num{font-size:64px;font-weight:900;color:#000;line-height:1;}
+.circle-label{font-size:11px;font-weight:600;color:#AAA;letter-spacing:3px;text-transform:uppercase;}
+.score-label{font-size:22px;font-weight:500;color:#888;text-transform:uppercase;letter-spacing:2px;}
 
 /* ── TWO COLUMNS ── */
-.two-col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-  margin-top: 32px;
+.grid2{
+  display:grid;grid-template-columns:1fr 1fr;
+  border:1px solid #E0E0E0;margin-top:36px;
 }
-.col-box {
-  background: #F0EBE0;
-  padding: 40px 44px;
-  border-radius: 8px;
+.box{padding:44px 48px;border-right:1px solid #E0E0E0;}
+.box:last-child{border-right:none;}
+.box.bk{background:#000;}
+.box-label{
+  font-size:11px;font-weight:600;color:#AAA;
+  letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;
 }
-.col-box.dark-col { background: rgba(255,255,255,0.05); }
-.col-box h3 {
-  font-size: 12px;
-  font-weight: 700;
-  color: #AAAAAA;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  margin-bottom: 16px;
+.box.bk .box-label{color:rgba(255,255,255,0.25);}
+.box-num{
+  font-size:80px;font-weight:900;color:#000;
+  line-height:1;letter-spacing:-3px;margin-bottom:12px;
 }
-.col-box.dark-col h3 { color: rgba(255,255,255,0.35); }
-.col-box p {
-  font-size: 26px;
-  color: #141414;
-  line-height: 1.45;
-  font-weight: 600;
-}
-.col-box.dark-col p { color: rgba(255,255,255,0.85); }
+.box.bk .box-num{color:#fff;}
+.box-desc{font-size:20px;color:#888;line-height:1.45;}
+.box.bk .box-desc{color:rgba(255,255,255,0.45);}
 
-/* ── BIG STAT ── */
-.big-stat {
-  font-size: 140px;
-  font-weight: 900;
-  color: #C8A96E;
-  line-height: 1;
-  letter-spacing: -4px;
-  margin-bottom: 16px;
+/* ── STEP LIST ── */
+.steplist{display:flex;flex-direction:column;border-top:1px solid #E0E0E0;}
+.step{
+  display:flex;align-items:stretch;gap:0;
+  border-bottom:1px solid #E0E0E0;
 }
+.step-n{
+  font-size:64px;font-weight:900;color:#EBEBEB;
+  width:96px;flex-shrink:0;padding:20px 0;
+  line-height:1;display:flex;align-items:center;
+}
+.step-n.wh{color:rgba(255,255,255,0.08);}
+.step-body{
+  padding:24px 0 24px 36px;
+  border-left:1px solid #E0E0E0;
+}
+.step-body.wh{border-left-color:rgba(255,255,255,0.12);}
+.step-title{
+  font-size:28px;font-weight:700;color:#000;
+  text-transform:uppercase;letter-spacing:.5px;
+  margin-bottom:6px;
+}
+.step-title.wh{color:#fff;}
+.step-sub{font-size:19px;color:#888;line-height:1.4;}
+.step-sub.wh{color:rgba(255,255,255,0.4);}
 
-/* ── STEPS ── */
-.steps { display: flex; flex-direction: column; gap: 28px; margin-top: 20px; }
-.step { display: flex; align-items: center; gap: 28px; }
-.step-num {
-  width: 64px; height: 64px;
-  border-radius: 50%;
-  background: #C8A96E;
-  color: #fff;
-  font-size: 26px; font-weight: 800;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
+/* ── SIEVES ── */
+.sieves{display:flex;gap:1px;background:#E0E0E0;margin-top:40px;}
+.sieve{background:#fff;padding:40px 40px;flex:1;display:flex;flex-direction:column;gap:14px;}
+.sv-n{font-size:72px;font-weight:900;color:#F0F0F0;line-height:1;}
+.sv-title{
+  font-size:26px;font-weight:700;color:#000;
+  text-transform:uppercase;letter-spacing:.5px;
+  line-height:1.1;
 }
-.step-text { font-size: 28px; color: #141414; font-weight: 500; line-height: 1.35; }
-.step-text.white { color: rgba(255,255,255,0.85); }
+.sv-desc{font-size:19px;color:#888;line-height:1.4;}
 
-/* ── SIEVE BOXES ── */
-.sieve-row { display: flex; gap: 28px; margin-top: 32px; }
-.sieve-box {
-  flex: 1;
-  background: #F0EBE0;
-  border-radius: 8px;
-  padding: 36px 36px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.sieve-num { font-size: 48px; font-weight: 900; color: #C8A96E; line-height: 1; }
-.sieve-title { font-size: 20px; font-weight: 700; color: #141414; letter-spacing: 0.5px; }
-.sieve-text { font-size: 22px; color: #666; line-height: 1.4; }
-
-/* ── NAVIGATION ── */
-.nav {
-  position: fixed;
-  bottom: 28px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  z-index: 1000;
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(8px);
-  padding: 12px 20px;
-  border-radius: 40px;
-  border: 1px solid rgba(255,255,255,0.1);
-}
-.nav-btn {
-  width: 44px; height: 44px;
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 50%;
-  color: white;
-  font-size: 18px;
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: all 0.2s;
-  user-select: none;
-}
-.nav-btn:hover { background: rgba(255,255,255,0.25); }
-.nav-counter {
-  color: rgba(255,255,255,0.6);
-  font-size: 13px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  letter-spacing: 1px;
-  min-width: 70px;
-  text-align: center;
+/* ── INLINE PILL ── */
+.pill{
+  display:inline-block;background:#000;color:#fff;
+  font-size:.85em;font-weight:700;padding:3px 14px;
+  text-transform:uppercase;letter-spacing:1px;
 }
 
-/* ── PROGRESS BAR ── */
-.progress-bar {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: rgba(200,169,110,0.15);
-  z-index: 1000;
+/* ── AUTHOR ── */
+.author{
+  margin-top:48px;padding-top:36px;
+  border-top:1px solid #E0E0E0;
+  display:flex;align-items:center;gap:20px;
 }
-.progress-fill {
-  height: 100%;
-  background: #C8A96E;
-  transition: width 0.3s ease;
+.author.wh{border-top-color:rgba(255,255,255,0.12);}
+.a-box{
+  width:52px;height:52px;border:2px solid #000;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;font-weight:800;color:#000;flex-shrink:0;
+}
+.a-box.wh{border-color:#fff;color:#fff;}
+.a-name{font-size:20px;font-weight:700;color:#000;text-transform:uppercase;letter-spacing:1px;}
+.a-name.wh{color:#fff;}
+.a-role{font-size:14px;color:#AAA;margin-top:3px;}
+
+/* ── NAV ── */
+.nav{
+  position:fixed;bottom:28px;left:50%;transform:translateX(-50%);
+  display:flex;align-items:center;gap:12px;z-index:1000;
+  background:rgba(0,0,0,0.75);backdrop-filter:blur(12px);
+  padding:10px 20px;border:1px solid rgba(255,255,255,0.08);
+}
+.nb{
+  width:40px;height:40px;background:transparent;
+  border:1px solid rgba(255,255,255,0.2);
+  color:#fff;font-size:16px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .15s;
+}
+.nb:hover{background:rgba(255,255,255,0.1);}
+.nc{
+  color:rgba(255,255,255,0.4);font-size:12px;
+  font-weight:500;letter-spacing:3px;min-width:64px;text-align:center;
 }
 
-/* ── SECTION DIVIDER SLIDE ── */
-.sc.section-card {
-  background: #141414;
-  justify-content: flex-start;
-  padding-top: 120px;
-}
-.section-num {
-  font-size: 200px;
-  font-weight: 900;
-  color: rgba(255,255,255,0.04);
-  line-height: 1;
-  margin-bottom: -20px;
-  letter-spacing: -6px;
-}
+.prog{position:fixed;top:0;left:0;right:0;height:2px;background:rgba(255,255,255,0.04);z-index:1000;}
+.pfill{height:100%;background:#fff;transition:width .3s;}
 
-/* ── PHONE FRAME IN PANEL ── */
-.phone-frame {
-  width: 280px;
-  height: 497px;
-  border: 3px solid rgba(255,255,255,0.15);
-  border-radius: 36px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  padding: 24px;
-}
-.phone-notch {
-  width: 80px;
-  height: 6px;
-  background: rgba(255,255,255,0.15);
-  border-radius: 3px;
-  position: absolute;
-  top: 14px;
-}
-.phone-content {
-  font-size: 20px;
-  font-weight: 700;
-  color: rgba(255,255,255,0.6);
-  text-align: center;
-  line-height: 1.4;
-}
-
-/* ── QUOTE SLIDE ── */
-.giant-quote {
-  font-size: 52px;
-  font-weight: 800;
-  line-height: 1.2;
-  color: #141414;
-  letter-spacing: -1px;
-  position: relative;
-  padding-left: 40px;
-}
-.giant-quote::before {
-  content: '«';
-  position: absolute;
-  left: -10px;
-  top: -10px;
-  font-size: 120px;
-  color: #C8A96E;
-  opacity: 0.3;
-  line-height: 1;
-  font-family: Georgia, serif;
-}
-.giant-quote.white { color: #FFFFFF; }
-
-/* ── LOGO / AUTHOR BLOCK ── */
-.author-block {
-  margin-top: 48px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-.author-dot {
-  width: 48px; height: 48px;
-  border-radius: 50%;
-  background: #C8A96E;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px; font-weight: 800; color: #fff;
-}
-.author-name { font-size: 20px; font-weight: 700; color: #141414; }
-.author-title { font-size: 16px; color: #999; margin-top: 2px; }
-
-/* ── KEYBOARD HINT ── */
-.kb-hint {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  color: rgba(255,255,255,0.25);
-  font-size: 12px;
-  font-family: 'Inter', sans-serif;
-  z-index: 1000;
-  letter-spacing: 1px;
+.hint{
+  position:fixed;top:20px;right:24px;
+  color:rgba(255,255,255,0.2);font-size:11px;letter-spacing:2px;z-index:1000;
 }
 </style>
 </head>
 <body>
 
-<div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
-<div class="kb-hint">← → или клавиши со стрелками</div>
+<div class="prog"><div class="pfill" id="pf"></div></div>
+<div class="hint">← →</div>
 
-<div class="presentation-wrapper" id="wrapper">
-<div class="presentation" id="presentation">
+<div class="pw" id="wrapper">
+<div class="pres" id="pres">
 
 
-<!-- ═══════════════════════════════════════
-     SLIDE 1 · ОБЛОЖКА
-═══════════════════════════════════════ -->
-<div class="slide active">
-  <div class="sc cream">
-    <div class="tag">Видео-серия · Инвестиции</div>
-    <div class="headline xxl">Бали.<br>Недвижимость.<br>Честно.</div>
-    <div class="divider"></div>
-    <div class="body">Александр Дормидонов — застройщик<br>6+ лет на рынке Бали</div>
-    <div class="author-block">
-      <div class="author-dot">А</div>
+<!-- ▓▓▓▓▓  01  ОБЛОЖКА  ▓▓▓▓▓ -->
+<div class="s on">
+<div class="c">
+  <div class="eyebrow">Видео-серия · Честный отбор</div>
+  <div class="h1">Бали.<br>Недвижимость.<br>Честно.</div>
+  <div class="ln short"></div>
+  <div class="lead">Застройщик — не эксперт по недвижимости.<br>6+ лет на рынке Бали. Изнутри.</div>
+  <div class="author">
+    <div class="a-box">А</div>
+    <div>
+      <div class="a-name">Александр Дормидонов</div>
+      <div class="a-role">Застройщик · Бали · 6+ лет</div>
+    </div>
+  </div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  02  ХУК — ВОПРОС  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c">
+  <div class="eyebrow">01 · Хук</div>
+  <div class="h1">Почему одна вилла<br>стоит $1 000 000,<br>а другая — $50 000?</div>
+  <div class="ln"></div>
+  <div class="lead">На фото они одинаковые: бассейн, пальмы, закат.<br>Только одна приносит деньги — а другую <b>невозможно сдать.</b></div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  03  КТО Я  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c">
+  <div class="eyebrow">02 · Автор</div>
+  <div class="h1 lg">Александр<br>Дормидонов</div>
+  <div class="ln short"></div>
+  <div class="lead">Более <b>6 лет на рынке Бали</b> — не как эксперт по недвижимости, а как <b>застройщик.</b> Знаю, кто как строит, кто из чего строит, кто достроит — а кто нет.</div>
+  <div class="lead" style="margin-top:24px;">Могу проверить любой объект и сказать, стоит ли в него входить.</div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  04  ВОПРОС К ЗРИТЕЛЮ  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c bk">
+  <div class="eyebrow wh">03 · Вопрос</div>
+  <div class="h1 wh lg">Ты не устал<br>от экспертов,<br>которые катаются<br>на Ferrari?</div>
+  <div class="ln bk"></div>
+  <div class="lead wh">Хвастаются успехом — а ты в итоге получаешь виллу, которую не сдать и не продать. Или ещё хуже — <b>недострой, суды, потеря денег.</b></div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  05  ГЛАВНОЕ ЗАБЛУЖДЕНИЕ  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c gr">
+  <div class="eyebrow">Заблуждение № 1</div>
+  <div class="qblock">
+    <p>«На Бали можно<br>купить отличную<br>виллу за копейки»</p>
+  </div>
+  <div class="ln" style="margin-top:48px;"></div>
+  <div class="lead">Австралиец построил за миллион — а тебе отдаст за сто тысяч. Так не бывает.<br><b>Это первая и главная ловушка рынка Бали.</b></div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  06  ГЛАВНЫЙ РИСК  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c bk">
+  <div class="eyebrow wh">04 · Риск</div>
+  <div class="h1 wh md">Самый большой риск —<br>не объект.</div>
+  <div class="ln bk"></div>
+  <div class="h1 wh sm" style="margin-bottom:32px;">Самый большой риск —<br>неправильный проводник.</div>
+  <div class="lead wh">С кем ты идёшь в сделку — это решает всё.</div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  07  ЭКСПЕРТ VS ЗАСТРОЙЩИК  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c">
+  <div class="eyebrow">05 · Механизм</div>
+  <div class="h1 md">Тебя в блудняк<br>ведёт не застройщик.</div>
+  <div class="ln"></div>
+  <div class="lead">Тебя ведёт <b>эксперт</b> — тот, кто задаёт вопросы только для того, чтобы выслушать и тут же предложить то, что у него есть в листинге. <b>Комиссия важнее твоего результата.</b></div>
+  <div class="grid2" style="margin-top:40px;">
+    <div class="box">
+      <div class="box-label">Эксперт</div>
+      <div class="box-desc" style="font-size:22px;color:#444;">Продаёт то, что есть. Берёт комиссию — уходит. Результат не его ответственность.</div>
+    </div>
+    <div class="box bk">
+      <div class="box-label">Застройщик</div>
+      <div class="box-desc" style="font-size:22px;color:rgba(255,255,255,0.65);">Знает, что строит, из чего, кто достроит и когда. Отвечает за результат.</div>
+    </div>
+  </div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  08  ИСТОРИЯ: СОЧИ  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c">
+  <div class="eyebrow">06 · История</div>
+  <div class="h1 lg">До Бали я строил<br>виллы в Сочи.</div>
+  <div class="ln short"></div>
+  <div class="lead"><b>40 вилл — 7 500 кв.м.</b> Красивые, детальные, эксклюзивные. И именно тогда я понял главную ошибку, которую совершают все застройщики и все покупатели недвижимости.</div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  09  ГЛАВНАЯ ОШИБКА СОЧИ  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c bk">
+  <div class="eyebrow wh">07 · Ошибка</div>
+  <div class="qblock wh">
+    <p>Мы строили то,<br>что нравится нам.</p>
+  </div>
+  <div class="ln bk" style="margin-top:48px;"></div>
+  <div class="lead wh">Нереально красивые виллы. Но неликвидные на рынке сдачи. Разрознены по 1–2 штуки. Управляющая компания не берёт. <b>Строили для себя, а не для дохода.</b></div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  10  ЦИФРЫ СОЧИ VS БАЛИ  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c gr">
+  <div class="eyebrow">08 · Цифры</div>
+  <div class="h1 sm">Сравнение доходности</div>
+  <div class="grid2">
+    <div class="box">
+      <div class="box-label">Сочи · 7 500 м²</div>
+      <div class="box-num" style="font-size:60px;">~700 ₽</div>
+      <div class="box-desc">с квадратного метра в аренду. 40 вилл. Высокие затраты на управление, низкая ликвидность.</div>
+    </div>
+    <div class="box bk">
+      <div class="box-label">Бали · правильный подход</div>
+      <div class="box-num" style="font-size:60px;">В разы больше</div>
+      <div class="box-desc">При меньшей площади — существенно выше доход. Потому что строю <b style="color:#fff">инвестиционный продукт.</b></div>
+    </div>
+  </div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  11  ПЕРЕЛОМНЫЙ МОМЕНТ  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c bk">
+  <div class="eyebrow wh">09 · Перелом</div>
+  <div class="h1 wh md">Москва. Сочи. Алтай.<br>Нигде не живу.</div>
+  <div class="ln bk"></div>
+  <div class="lead wh">Построил дом в Москве — не живу. Сочи — не живу. Алтай — не живу.</div>
+  <div class="lead wh" style="margin-top:24px;">И тогда понял: <b>нужно строить только то, что будет хорошо сдаваться в аренду на короткий срок.</b> Не то, что нравится мне.</div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  12  НОВЫЙ ПОДХОД  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c">
+  <div class="eyebrow">10 · Новый подход</div>
+  <div class="h1 lg">Теперь я строю<br>инвестиционный<br>продукт.</div>
+  <div class="ln short"></div>
+  <div class="lead">Финансовые модели. Юнит-экономика. <b>Вилла строится не для того, чтобы она нравилась — а для того, чтобы хорошо сдавалась и приносила стабильный пассивный доход в долларах.</b></div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  13  СДВИГ УБЕЖДЕНИЙ  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c gr">
+  <div class="eyebrow">11 · Сдвиг убеждений</div>
+  <div class="h1 lg">Все мы выросли<br>на сказках.</div>
+  <div class="ln"></div>
+  <div class="lead">Верим в халяву, в лёгкий путь. Поэтому так привлекательно звучит: <b>«Купи виллу за $50K, получи доход $5 000 в месяц».</b></div>
+  <div class="lead" style="margin-top:28px;">Но давай проверим: если тебе обещают $3 000 в месяц на 5 лет — поставь себя на место продавца. <b>Как он это выполнит?</b> Рубль на дереве не растёт.</div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  14  РЫНОК СТАБИЛИЗИРОВАЛСЯ  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c bk">
+  <div class="eyebrow wh">12 · Рынок</div>
+  <div class="h1 wh lg">Качественные<br>объекты есть.</div>
+  <div class="ln bk"></div>
+  <div class="lead wh">Но <b>не за копейки</b> и <b>не в полцены.</b> Рынок стабилизировался. Сомнительные игроки сошли с дистанции.</div>
+  <div class="lead wh" style="margin-top:28px;">Сейчас можно купить нормальную виллу по адекватной цене — если ты <b>не ищешь сказку.</b></div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  15  СЕКЦИЯ: СЕКРЕТ № 1  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c bk" style="justify-content:flex-start;padding-top:110px;">
+  <div class="eyebrow wh">Секрет первый</div>
+  <div style="font-size:220px;font-weight:900;color:rgba(255,255,255,0.04);line-height:1;letter-spacing:-8px;margin-bottom:-30px;position:relative;z-index:0;">01</div>
+  <div class="h1 wh" style="position:relative;z-index:1;margin-bottom:32px;">Правило<br>гостиничного<br>номера</div>
+  <div class="lead wh">Без этого правила любая вилла превращается в стройку для души, а не в актив.</div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  16  ДВА ТИПА ИГРОКОВ  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c">
+  <div class="eyebrow">Секрет № 1 · 13</div>
+  <div class="h1 sm">На Бали два типа игроков<br>в недвижимости</div>
+  <div class="grid2">
+    <div class="box">
+      <div class="box-label">Непрофессиональные</div>
+      <div class="box-desc" style="font-size:21px;color:#444;line-height:1.5;">Каждый житель достроил пристройку, назвал её виллой, дал рекламу. Таких — большинство. Без понимания отеля, без управляющей компании.</div>
+    </div>
+    <div class="box bk">
+      <div class="box-label">Профессиональные</div>
+      <div class="box-desc" style="font-size:21px;color:rgba(255,255,255,0.6);line-height:1.5;">Специально разрабатывают коммерческий отельный проект — приспособленный для гостей, а не для жизни.</div>
+    </div>
+  </div>
+  <div class="lead" style="margin-top:28px;font-size:22px;">На фотках они <b>одинаковые.</b> Разница — в доходе.</div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  17  ПРИНЦИП SHERATON  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c bk">
+  <div class="eyebrow wh">Секрет № 1 · 14</div>
+  <div class="h1 wh md">Обрати внимание<br>на номер в Sheraton.</div>
+  <div class="ln bk"></div>
+  <div class="lead wh">Он <b>одинаковый в любой стране.</b> Выключатели, розетки, высота кровати, освещение — всё стандартизировано. Потому что гость должен чувствовать себя комфортно, а не изучать новое пространство.</div>
+  <div class="lead wh" style="margin-top:28px;">Это и есть профессиональная отельная недвижимость — то, за что люди <b>платят посуточно большие деньги.</b></div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  18  ЦИФРЫ $100 VS $500  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c gr">
+  <div class="eyebrow">Секрет № 1 · Цифры</div>
+  <div class="h1 sm">Разница в стоимости аренды</div>
+  <div class="grid2">
+    <div class="box">
+      <div class="box-label">Частный сектор · без инфраструктуры</div>
+      <div class="box-num">$100</div>
+      <div class="box-desc">в сутки. Нет управляющей компании, нет стандарта, низкая заполняемость.</div>
+    </div>
+    <div class="box bk">
+      <div class="box-label">Отельный стандарт · с инфраструктурой</div>
+      <div class="box-num">$500</div>
+      <div class="box-desc">в сутки. Высокая заполняемость, управляющая компания, стабильный доход.</div>
+    </div>
+  </div>
+  <div class="lead" style="margin-top:28px;font-size:22px;">Разница <b>в 5 раз</b> — при похожих фотографиях.</div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  19  ЧЕСТНЫЙ ОТБОР — НАВЫК  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c">
+  <div class="eyebrow">Секрет № 1 · Главный навык</div>
+  <div class="h1">Честный<br>отбор</div>
+  <div class="ln short"></div>
+  <div class="lead lg">Как отличить профессиональный объект от частного сектора, если на фотках они одинаковые?</div>
+  <div class="lead" style="margin-top:28px;"><b>Это и есть главный навык инвестора в недвижимость на Бали.</b> Без этого навыка любой выбор — лотерея.</div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  20  МИКРОИНСТРУМЕНТ: КАРТА  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c">
+  <div class="eyebrow">Секрет № 1 · Микроинструмент</div>
+  <div class="h1 md">Открой карту.<br>Радиус — 5 минут пешком.</div>
+  <div class="ln"></div>
+  <div class="lead">Найди любой объект, который рассматриваешь. Что вокруг?</div>
+  <div class="grid2" style="margin-top:32px;">
+    <div class="box">
+      <div class="box-label">Частный сектор</div>
+      <div class="box-desc" style="font-size:22px;color:#444;">Петухи. Жилые дома. Нет кафе, нет магазинов. Управляющая компания не возьмёт.</div>
+    </div>
+    <div class="box bk">
+      <div class="box-label">Профессиональный объект</div>
+      <div class="box-desc" style="font-size:22px;color:rgba(255,255,255,0.65);">Кафе, рестораны, магазины. Гость хочет сюда <b style="color:#fff">вернуться.</b></div>
+    </div>
+  </div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  21  ГОСТЬ ХОЧЕТ ВЕРНУТЬСЯ  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c bk">
+  <div class="eyebrow wh">Секрет № 1 · Итог</div>
+  <div class="h1 wh md">Нет больших<br>гардеробных.<br>Нет парковок.</div>
+  <div class="ln bk"></div>
+  <div class="lead wh">Всё для того, чтобы человек <b>не обживался.</b> Как только гость начинает сверлить телевизор к стене — он живёт, а не отдыхает. Он перестаёт платить посуточно.</div>
+  <div class="lead wh" style="margin-top:24px;"><b>Гость должен хотеть вернуться, а не остаться жить.</b></div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  22  СЕКЦИЯ: СЕКРЕТ № 2  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c bk" style="justify-content:flex-start;padding-top:110px;">
+  <div class="eyebrow wh">Секрет второй</div>
+  <div style="font-size:220px;font-weight:900;color:rgba(255,255,255,0.04);line-height:1;letter-spacing:-8px;margin-bottom:-30px;">02</div>
+  <div class="h1 wh" style="margin-bottom:32px;">Земля,<br>которую никто<br>не купит</div>
+  <div class="lead wh">Даже если объект красивый — неправильная земля убивает всю инвестицию.</div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  23  ЗЕМЛЯ НЕ МОЖЕТ БЫТЬ ДЕШЁВОЙ  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c">
+  <div class="eyebrow">Секрет № 2 · 17</div>
+  <div class="h1 lg">Земля на Бали<br>не может<br>быть дешёвой.</div>
+  <div class="ln short"></div>
+  <div class="lead">Хорошая земля с <b>коммерческим зонированием</b> стоит денег. Дешёвая земля создаёт высокую конкуренцию при перепродаже — её будет сложно продать. Это неликвид.</div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  24  ДЕШЁВЫЙ СЫР  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c gr">
+  <div class="eyebrow">Секрет № 2 · 18</div>
+  <div class="qblock">
+    <p>«Дешёвый сыр —<br>только<br>в мышеловке»</p>
+  </div>
+  <div class="ln" style="margin-top:48px;"></div>
+  <div class="lead">Когда тебе предлагают участок подозрительно дёшево — это не удача. <b>Если бы земля действительно стоила так мало, её уже давно купил бы местный застройщик.</b></div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  25  ПРОБЛЕМЫ ДЕШЁВОЙ ЗЕМЛИ  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c">
+  <div class="eyebrow">Секрет № 2 · Детали</div>
+  <div class="h1 sm">Что скрывается<br>за низкой ценой?</div>
+  <div class="ln"></div>
+  <div class="steplist">
+    <div class="step">
+      <div class="step-n">01</div>
+      <div class="step-body">
+        <div class="step-title">Проблемы с документами</div>
+        <div class="step-sub">Некоммерческое назначение, спорное право собственности, обременения.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">02</div>
+      <div class="step-body">
+        <div class="step-title">Сельхозназначение</div>
+        <div class="step-sub">На такой земле нельзя строить здание и нельзя вести коммерческую деятельность.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">03</div>
+      <div class="step-body">
+        <div class="step-title">Нулевая ликвидность</div>
+        <div class="step-sub">При перепродаже никто не купит. Управляющая компания не возьмёт на обслуживание.</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  26  MICROTOOL — ЗУМ  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c bk">
+  <div class="eyebrow wh">Секрет № 2 · Microtool</div>
+  <div class="h1 wh md">5 минут на Зуме<br>сэкономят<br>годы ошибок.</div>
+  <div class="ln bk"></div>
+  <div class="lead wh">Я покажу, как <b>за 5 минут проверить назначение земли по документам.</b> В каждой стране разные категории земли — здесь не вся земля разрешает коммерческое строительство.</div>
+  <div class="lead wh" style="margin-top:24px;">Земля — это фундамент. Дальше всё зависит от неё.</div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  27  СЕКЦИЯ: СЕКРЕТ № 3  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c bk" style="justify-content:flex-start;padding-top:110px;">
+  <div class="eyebrow wh">Секрет третий</div>
+  <div style="font-size:220px;font-weight:900;color:rgba(255,255,255,0.04);line-height:1;letter-spacing:-8px;margin-bottom:-30px;">03</div>
+  <div class="h1 wh" style="margin-bottom:32px;">Стройка<br>без конца</div>
+  <div class="lead wh">Даже умные люди теряют деньги на этом этапе. Правильная земля — не гарантия того, что стройка дойдёт до конца.</div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  28  ИСТОРИЯ ДОМОГАЦКОГО  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c gr">
+  <div class="eyebrow">Секрет № 3 · Реальный случай</div>
+  <div class="h1 sm">Гузеева, Собчак,<br>Лолита рекламировали<br>застройщика.</div>
+  <div class="ln"></div>
+  <div class="lead">Виллы за $200 000 с видом на океан. <b>80 человек вложились.</b> Стройка встала. Застройщик сбежал с Бали. Люди потеряли деньги.</div>
+  <div class="lead" style="margin-top:24px;">Это не история про мошенников. Это история про то, что <b>никто не прошёл три сита «Честного отбора».</b></div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  29  СТРОЙКА — КАСКАД  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c bk">
+  <div class="eyebrow wh">Секрет № 3 · 21</div>
+  <div class="h1 wh md">Стройка на Бали —<br>каскад конфликтов.</div>
+  <div class="ln bk"></div>
+  <div class="lead wh">Параллельные процессы не могут идти одновременно. Пока один не закончится — другой не начнётся. <b>Разрешения, материалы, согласования.</b></div>
+  <div class="lead wh" style="margin-top:24px;">Каждый этап может зависнуть на недели, если не знаешь, как управлять этим процессом.</div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  30  ТРИ СИТА  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c">
+  <div class="eyebrow">Честный отбор · Система</div>
+  <div class="h1 sm">Три сита<br>«Честного отбора»</div>
+  <div class="sieves">
+    <div class="sieve">
+      <div class="sv-n">01</div>
+      <div class="sv-title">Готов учиться</div>
+      <div class="sv-desc">На чужих ошибках — а не на своих деньгах</div>
+    </div>
+    <div class="sieve">
+      <div class="sv-n">02</div>
+      <div class="sv-title">Готов платить</div>
+      <div class="sv-desc">За качественный актив — без поиска халявы</div>
+    </div>
+    <div class="sieve">
+      <div class="sv-n">03</div>
+      <div class="sv-title">Готов управлять</div>
+      <div class="sv-desc">Стройкой как процессом — или выбрать надёжного подрядчика</div>
+    </div>
+  </div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  31  10 ВОПРОСОВ ПОДРЯДЧИКУ  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c bk">
+  <div class="eyebrow wh">Секрет № 3 · Microtool</div>
+  <div class="h1 wh md">10 вопросов<br>подрядчику до<br>первого платежа</div>
+  <div class="ln bk"></div>
+  <div class="lead wh">Каждый вопрос — с пояснением, примером и конкретной ситуацией, в которой он <b>спасает твои деньги.</b></div>
+  <div class="lead wh" style="margin-top:24px;">Это список, после которого ты больше не зайдёшь на переговоры без подготовки. <b>Получишь на созвоне.</b></div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  32  СИНТЕЗ: ДВА ТИПА  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c gr">
+  <div class="eyebrow">Синтез · 24</div>
+  <div class="h1 sm">Два типа покупателей.<br>Один результат у каждого.</div>
+  <div class="grid2">
+    <div class="box" style="border-top:3px solid #E53535;">
+      <div class="box-label" style="color:#E53535;">Тип первый</div>
+      <div class="box-desc" style="font-size:21px;color:#444;line-height:1.5;">Выбирает по эмоции и картинке. Не прошёл ни одного сита. Итог — потеря денег или недострой.</div>
+    </div>
+    <div class="box bk" style="border-top:3px solid #fff;">
+      <div class="box-label">Тип второй</div>
+      <div class="box-desc" style="font-size:21px;color:rgba(255,255,255,0.65);line-height:1.5;">Задаёт три вопроса до подписания. Прошёл три сита. Итог — доходный ликвидный актив.</div>
+    </div>
+  </div>
+  <div class="lead" style="margin-top:28px;font-size:21px;">Разница — не в деньгах. <b>Разница — в трёх вопросах до подписания.</b></div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  33  ТИП 1 — СОБЧАК  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c bk">
+  <div class="eyebrow wh">Тип первый · 25</div>
+  <div class="h1 wh md">Собчак купила виллу<br>на Бали прямо<br>на месте.</div>
+  <div class="ln bk"></div>
+  <div class="lead wh">Командировка, красивая вилла в Улувату, <b>$150 000 прямо на месте.</b> Вилла ещё строилась. Выбор по эмоции, по картинке.</div>
+  <div class="lead wh" style="margin-top:24px;">Гузеева и Лолита рекламировали застройщика — не проверив, как он строит. <b>80 человек вложились. Стройка встала.</b></div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  34  ТИП 2 — ТРИ ВОПРОСА  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c">
+  <div class="eyebrow">Тип второй · 26</div>
+  <div class="h1 sm">Умные не хвастаются<br>покупками<br>в Instagram.</div>
+  <div class="ln"></div>
+  <div class="steplist">
+    <div class="step">
+      <div class="step-n">01</div>
+      <div class="step-body">
+        <div class="step-title">Какое назначение земли?</div>
+        <div class="step-sub">Коммерческое или сельхозназначение?</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">02</div>
+      <div class="step-body">
+        <div class="step-title">Кто управляет объектом?</div>
+        <div class="step-sub">Сколько фактически зарабатывает — не на бумаге?</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">03</div>
+      <div class="step-body">
+        <div class="step-title">Какая реальная доходность?</div>
+        <div class="step-sub">Не прогноз в презентации — а факт по соседним объектам.</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  35  ТРИ СИТА → ОДИН РЕЗУЛЬТАТ  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c bk">
+  <div class="eyebrow wh">Синтез · Итог</div>
+  <div class="h1 wh">Три сита.<br>Один<br>результат.</div>
+  <div class="ln bk"></div>
+  <div class="lead wh lg">Ты строишь не иллюзию — а <b>ликвидный актив.</b> Виллу, которая приносит деньги, а не проблемы.</div>
+  <div class="lead wh" style="margin-top:24px;">Пассивный доход в долларах. Стабильно. Это и есть второй сценарий твоей жизни.</div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  36  ОФФЕР: СОЗВОН  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c gr">
+  <div class="eyebrow">Оффер · 28</div>
+  <div class="h1 lg">Просто созвон<br>на Зуме.</div>
+  <div class="ln short"></div>
+  <div class="lead">Никакой продажи. Никакого давления. Мы познакомимся, я отвечу на все твои вопросы, разберу твою ситуацию и покажу, <b>какой объект тебе подходит.</b></div>
+  <div class="lead" style="margin-top:28px;">Ты прошёл через «Честный отбор» — теперь знаешь, как отличить настоящий объект от красивой картинки. Следующий шаг — личный разбор твоей ситуации.</div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  37  БОНУС — ВИДЕООБЗОР  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c bk">
+  <div class="eyebrow wh">Бонус при записи</div>
+  <div class="h1 wh md">Подробнейший<br>получасовой<br>видеообзор виллы.</div>
+  <div class="ln bk"></div>
+  <div class="lead wh">Строительная команда сняла <b>каждый угол, каждый метр, каждую деталь</b> — почему она приносит деньги, а не просто красиво выглядит.</div>
+  <div class="lead wh" style="margin-top:24px;">Закрытая информация. <b>Через 24 часа ссылка станет недоступна.</b> Получишь сразу при записи — до созвона.</div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  38  ТРИ ШАГА  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c">
+  <div class="eyebrow">Механика · 30</div>
+  <div class="h1 sm">Три шага.</div>
+  <div class="steplist" style="margin-top:8px;">
+    <div class="step">
+      <div class="step-n">01</div>
+      <div class="step-body">
+        <div class="step-title">Запишись на созвон на Зум</div>
+        <div class="step-sub">Займёт 30 секунд — просто укажи удобное время</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">02</div>
+      <div class="step-body">
+        <div class="step-title">Получи видеообзор виллы в подарок</div>
+        <div class="step-sub">До того, как мы вообще поговорим — сразу на почту</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">03</div>
+      <div class="step-body">
+        <div class="step-title">Консультируемся без обязательств</div>
+        <div class="step-sub">Без давления, без продаж — только твоя ситуация и подходящий объект</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  39  ТРИ ВОПРОСА ДЛЯ ЗАПИСИ  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c bk">
+  <div class="eyebrow wh">Запись · 31</div>
+  <div class="h1 wh sm">Ответь на три вопроса — подберу удобное время.</div>
+  <div class="ln bk"></div>
+  <div class="steplist">
+    <div class="step">
+      <div class="step-n wh">01</div>
+      <div class="step-body wh">
+        <div class="step-title wh">Бюджет и сроки</div>
+        <div class="step-sub wh">Какой бюджет и сроки ты рассматриваешь?</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n wh">02</div>
+      <div class="step-body wh">
+        <div class="step-title wh">Формат инвестиции</div>
+        <div class="step-sub wh">Под сдачу, для себя или и то, и другое?</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n wh">03</div>
+      <div class="step-body wh">
+        <div class="step-title wh">Что уже смотрел</div>
+        <div class="step-sub wh">Что уже рассматривал и что смущает или останавливает?</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  40  ЗАКРЫТИЕ  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c">
+  <div class="eyebrow">Закрытие · 32</div>
+  <div class="h1 lg">Вот и всё.</div>
+  <div class="ln short"></div>
+  <div class="lead">Два видео. Три сита <b>«Честного отбора».</b> Теперь ты знаешь, на что смотреть при покупке виллы на Бали, чтобы не потерять деньги.</div>
+  <div class="qblock" style="margin-top:40px;">
+    <p>Недвижимость на Бали —<br>это второй сценарий<br>твоей жизни.</p>
+  </div>
+</div>
+<div class="r"></div>
+</div>
+
+
+<!-- ▓▓▓▓▓  41  ФИНАЛ  ▓▓▓▓▓ -->
+<div class="s">
+<div class="c bk" style="justify-content:space-between;padding-top:110px;padding-bottom:100px;">
+  <div>
+    <div class="eyebrow wh">Seven Sky Villas · Честный отбор</div>
+    <div class="h1 wh" style="font-size:160px;letter-spacing:-5px;line-height:.85;margin-bottom:0;">Поехали.</div>
+  </div>
+  <div>
+    <div class="ln bk" style="margin-bottom:32px;"></div>
+    <div class="lead wh">Три сита. Правильный объект. Стабильный доход в долларах.<br>Второй сценарий твоей жизни — вот что такое недвижимость на Бали.</div>
+    <div class="author wh" style="margin-top:40px;padding-top:32px;">
+      <div class="a-box wh">А</div>
       <div>
-        <div class="author-name">Александр Дормидонов</div>
-        <div class="author-title">Застройщик · Бали · Честный отбор</div>
+        <div class="a-name wh">Александр Дормидонов</div>
+        <div class="a-role">Застройщик · Бали · sevensky-bali.com</div>
       </div>
     </div>
   </div>
-  <div class="sp dark">
-    <div class="p-label">Серия видео</div>
-    <div class="p-quote lg">Как купить виллу, которая приносит деньги</div>
-    <div class="p-accent">Два видео. Три секрета. Один выбор.</div>
-    <div class="p-big">1</div>
-  </div>
+</div>
+<div class="r"></div>
 </div>
 
 
-<!-- ═══════════════════════════════════════
-     SLIDE 2 · ХУК — ВОПРОС
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc cream">
-    <div class="num-label">01 · Хук</div>
-    <div class="headline xl">Почему одна<br>вилла стоит $1M,<br>а другая — $50K?</div>
-    <div class="body">На фото они одинаковые: бассейн, пальмы, закат. Только одна приносит деньги — а другую невозможно сдать.</div>
-  </div>
-  <div class="sp dark">
-    <div class="p-label">Главный вопрос</div>
-    <div class="p-quote">Разница — не в картинке.<br>Разница — в том, что<br>за ней стоит.</div>
-    <div class="p-big">2</div>
-  </div>
-</div>
+</div><!-- /pres -->
+</div><!-- /pw -->
 
-
-<!-- ═══════════════════════════════════════
-     SLIDE 3 · КТО Я
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc cream">
-    <div class="num-label">02 · Автор</div>
-    <div class="headline">Меня зовут<br>Александр Дормидонов.</div>
-    <div class="divider"></div>
-    <div class="body">Более <strong>6 лет</strong> работаю на рынке Бали — не как эксперт по недвижимости, а как <strong>застройщик</strong>. Я знаю, кто как строит, кто из чего строит, кто достроит — а кто нет.</div>
-  </div>
-  <div class="sp dark">
-    <div class="p-label">Позиция</div>
-    <div class="p-quote">Застройщик,<br>а не «эксперт<br>по недвижимости»</div>
-    <div class="p-accent">Знаю рынок изнутри</div>
-    <div class="p-big">3</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 4 · ВОПРОС К ЗРИТЕЛЮ
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc dark">
-    <div class="num-label" style="color:rgba(255,255,255,0.3)">03 · Вопрос</div>
-    <div class="giant-quote white">Ты не устал от экспертов,<br>которые катаются<br>на Ferrari и Lamborghini?</div>
-    <div class="body white" style="margin-top:40px">Хвастаются успехом — а ты в итоге получаешь виллу, которую не сдать и не продать. Или ещё хуже — <strong>недострой, суды, потеря денег.</strong></div>
-  </div>
-  <div class="sp gold">
-    <div class="p-label dark-label">Главная боль</div>
-    <div class="p-quote dark-text">Красивая картинка не равна доходному активу</div>
-    <div class="p-accent dark-text">Давай разберём это честно</div>
-    <div class="p-big gold-text">4</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 5 · ГЛАВНОЕ ЗАБЛУЖДЕНИЕ
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc cream">
-    <div class="tag">Заблуждение №1</div>
-    <div class="headline xl">«На Бали можно<br>купить отличную<br>виллу за копейки»</div>
-    <div class="hbox">
-      <p>Австралиец построил за миллион — а тебе отдаст за сто тысяч. Так не бывает. Это первая ловушка.</p>
-    </div>
-  </div>
-  <div class="sp dark">
-    <div class="p-label">Реальность</div>
-    <div class="p-quote">Рынок<br>не работает<br>так</div>
-    <div class="p-accent">Хорошая вилла — по адекватной цене</div>
-    <div class="p-big">5</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 6 · САМЫЙ БОЛЬШОЙ РИСК
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc dark">
-    <div class="num-label" style="color:rgba(255,255,255,0.3)">04 · Риск</div>
-    <div class="headline white xl">Самый большой<br>риск — не объект.</div>
-    <div class="divider"></div>
-    <div class="headline md white">Самый большой риск —<br>неправильный проводник.</div>
-    <div class="body white" style="margin-top: 32px">С кем ты идёшь в сделку — это решает всё.</div>
-  </div>
-  <div class="sp gold">
-    <div class="p-label dark-label">Главный принцип</div>
-    <div class="p-quote dark-text lg">Выбирай проводника, а не объект</div>
-    <div class="p-big gold-text">6</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 7 · ЭКСПЕРТ VS ЗАСТРОЙЩИК
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc cream">
-    <div class="num-label">05 · Механизм</div>
-    <div class="headline">Тебя в блудняк<br>ведёт не застройщик.</div>
-    <div class="body" style="margin-bottom:32px">Тебя в блудняк ведёт <strong>эксперт</strong> — тот, кто задаёт тебе вопросы только для того, чтобы выслушать и тут же предложить то, что у него есть в листинге.</div>
-    <div class="two-col">
-      <div class="col-box">
-        <h3>Эксперт</h3>
-        <p>Продаёт то, что есть. Комиссия важнее твоего результата.</p>
-      </div>
-      <div class="col-box">
-        <h3>Застройщик</h3>
-        <p>Знает, что строит, из чего, кто достроит и когда.</p>
-      </div>
-    </div>
-  </div>
-  <div class="sp dark">
-    <div class="p-label">Разница</div>
-    <div class="p-quote">Эксперт продаёт<br>Застройщик<br>отвечает</div>
-    <div class="p-big">7</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 8 · ИСТОРИЯ: СОЧИ
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc cream">
-    <div class="tag">История</div>
-    <div class="headline">До Бали я строил<br>виллы в Сочи.</div>
-    <div class="divider"></div>
-    <div class="body">Небольшие комплексы. <strong>40 вилл — 7 500 кв.м.</strong> Красивые, детальные, эксклюзивные. И именно тогда я понял главную ошибку, которую совершают все.</div>
-  </div>
-  <div class="sp dark">
-    <div class="p-label">Опыт · Сочи</div>
-    <div class="p-quote">40 вилл.<br>7 500 м².<br>Главный урок.</div>
-    <div class="p-big">8</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 9 · ГЛАВНАЯ ОШИБКА СОЧИ
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc dark">
-    <div class="num-label" style="color:rgba(255,255,255,0.3)">06 · Ошибка</div>
-    <div class="giant-quote white">Мы строили то,<br>что нравится нам.</div>
-    <div class="body white" style="margin-top:40px">Нереально красивые виллы. Но неликвидные на рынке сдачи. Разрознены по 1–2 штуки. Управляющая компания не берёт. <strong>Итог: строили для себя, а не для дохода.</strong></div>
-  </div>
-  <div class="sp gold">
-    <div class="p-label dark-label">Ключевой вывод</div>
-    <div class="p-quote dark-text">Строить то, что нравится — и строить то, что сдаётся: это разные вещи</div>
-    <div class="p-big gold-text">9</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 10 · ЦИФРЫ СОЧИ VS БАЛИ
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc cream">
-    <div class="tag">Цифры</div>
-    <div class="headline md">Сравнение доходности</div>
-    <div class="divider"></div>
-    <div class="two-col" style="margin-top:8px">
-      <div class="col-box">
-        <h3>Сочи</h3>
-        <p style="font-size:32px; font-weight:900; color:#C8A96E; margin-bottom:8px">~700 ₽/м²</p>
-        <p>с квадратного метра в аренду. 7 500 кв.м. Два года назад.</p>
-      </div>
-      <div class="col-box">
-        <h3>Бали</h3>
-        <p style="font-size:32px; font-weight:900; color:#C8A96E; margin-bottom:8px">В разы больше</p>
-        <p>3 500 кв.м. При правильном подходе — существенно выше доходность.</p>
-      </div>
-    </div>
-    <div class="hbox" style="margin-top:28px">
-      <p>Меньше площадь — больше доход. Потому что в Бали строю <strong>инвестиционный продукт</strong>, а не для себя.</p>
-    </div>
-  </div>
-  <div class="sp dark">
-    <div class="p-label">Вывод</div>
-    <div class="p-quote">Меньше метров. Больше денег. Правильная модель.</div>
-    <div class="p-big">10</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 11 · ПЕРЕЛОМНЫЙ МОМЕНТ
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc dark">
-    <div class="num-label" style="color:rgba(255,255,255,0.3)">07 · Перелом</div>
-    <div class="headline white">Я построил дом<br>в Москве — не живу.</div>
-    <div class="body white" style="margin-top:16px">Построил в Сочи — не живу. Построил на Алтае — не живу.</div>
-    <div class="hbox dark-hbox" style="margin-top:36px">
-      <p>И тогда понял: <strong>нужно строить только то, что будет хорошо сдаваться в аренду.</strong> Не то, что нравится мне.</p>
-    </div>
-  </div>
-  <div class="sp gold">
-    <div class="p-label dark-label">Момент истины</div>
-    <div class="p-quote dark-text">Строй для арендатора, а не для себя</div>
-    <div class="p-big gold-text">11</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 12 · НОВЫЙ ПОДХОД
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc cream">
-    <div class="tag">Новый подход</div>
-    <div class="headline">Теперь я строю<br>инвестиционный<br>продукт.</div>
-    <div class="divider"></div>
-    <div class="body">Финансовые модели. Юнит-экономика. <strong>Вилла строится не для того, чтобы она нравилась — а для того, чтобы она хорошо сдавалась в аренду и приносила стабильный доход.</strong></div>
-  </div>
-  <div class="sp dark">
-    <div class="p-label">Принцип</div>
-    <div class="p-quote">Финмодель,<br>а не<br>эстетика</div>
-    <div class="p-accent">Пассивный доход в долларах</div>
-    <div class="p-big">12</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 13 · СДВИГ УБЕЖДЕНИЙ
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc cream">
-    <div class="tag">Сдвиг убеждений</div>
-    <div class="headline">Все мы выросли<br>на сказках.</div>
-    <div class="divider"></div>
-    <div class="body">Верим в халяву, в лёгкий путь. Поэтому так привлекательно звучит: <strong>«Купи виллу за $50K, получи доход $5 000 в месяц».</strong></div>
-    <div class="hbox" style="margin-top:32px">
-      <p>Но давай проверим: если тебе обещают $3 000 в месяц на 5 лет — поставь себя на место продавца. Как он это выполнит?</p>
-    </div>
-  </div>
-  <div class="sp dark">
-    <div class="p-label">Проверь</div>
-    <div class="p-quote">Рубль<br>на дереве<br>не растёт</div>
-    <div class="p-big">13</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 14 · РЫНОК СТАБИЛИЗИРОВАЛСЯ
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc dark">
-    <div class="num-label" style="color:rgba(255,255,255,0.3)">08 · Рынок</div>
-    <div class="headline white">Качественные<br>объекты есть.</div>
-    <div class="body white" style="margin-top:24px">Но <strong>не за копейки</strong> и <strong>не в полцены</strong>. Рынок стабилизировался. Сомнительные игроки сошли с дистанции.</div>
-    <div class="hbox dark-hbox" style="margin-top:36px">
-      <p>Сейчас можно купить нормальную виллу по адекватной цене — если ты не ищешь сказку.</p>
-    </div>
-  </div>
-  <div class="sp gold">
-    <div class="p-label dark-label">Момент</div>
-    <div class="p-quote dark-text">Рынок очищен. Время брать правильно.</div>
-    <div class="p-big gold-text">14</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 15 · СЕКЦИЯ: СЕКРЕТ №1
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc section-card" style="background:#111111">
-    <div class="section-num">01</div>
-    <div class="tag">Секрет первый</div>
-    <div class="headline white xl">Правило<br>гостиничного<br>номера</div>
-    <div class="body white" style="margin-top:32px">Без этого правила любая вилла превращается в стройку для души, а не в актив.</div>
-  </div>
-  <div class="sp dark">
-    <div class="p-label">Секрет №1</div>
-    <div class="p-quote lg">«Правило<br>гостиничного<br>номера»</div>
-    <div class="p-big">1</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 16 · ДВА ТИПА ИГРОКОВ
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc cream">
-    <div class="tag">Секрет №1</div>
-    <div class="headline md">На Бали два типа<br>игроков в недвижимости</div>
-    <div class="two-col" style="margin-top: 32px">
-      <div class="col-box">
-        <h3>Непрофессиональные</h3>
-        <p>Каждый житель достроил пристройку, назвал её виллой, дал рекламу. <strong>Таких — большинство.</strong> Без понимания отеля, без управляющей компании.</p>
-      </div>
-      <div class="col-box">
-        <h3>Профессиональные</h3>
-        <p>Специально разрабатывают коммерческий отельный проект, приспособленный для гостей — не для жизни.</p>
-      </div>
-    </div>
-    <div class="body" style="margin-top:32px; font-size: 22px">На фотках они <strong>одинаковые</strong>. Разница — в доходе.</div>
-  </div>
-  <div class="sp dark">
-    <div class="p-label">Два мира</div>
-    <div class="p-quote">Одна картинка — разные результаты</div>
-    <div class="p-big">16</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 17 · ПРИНЦИП SHERATON
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc dark">
-    <div class="num-label" style="color:rgba(255,255,255,0.3)">Секрет №1</div>
-    <div class="headline white">Обрати внимание<br>на номер в Sheraton.</div>
-    <div class="body white" style="margin-top:24px">Он <strong>одинаковый в любой стране</strong>. Выключатели, розетки, высота кровати, освещение — всё стандартизировано. Потому что гость должен чувствовать себя комфортно, а не изучать новое пространство.</div>
-    <div class="hbox dark-hbox" style="margin-top:32px">
-      <p>Это и есть профессиональная отельная недвижимость — то, за что люди платят посуточно большие деньги.</p>
-    </div>
-  </div>
-  <div class="sp gold">
-    <div class="p-label dark-label">Принцип</div>
-    <div class="p-quote dark-text">Sheraton одинаковый везде. Это не случайность.</div>
-    <div class="p-big gold-text">17</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 18 · ЦИФРЫ $100 VS $500
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc cream">
-    <div class="tag">Цифры · Секрет №1</div>
-    <div class="headline md">Разница в стоимости аренды</div>
-    <div class="two-col" style="margin-top: 24px">
-      <div class="col-box">
-        <h3>Частный сектор</h3>
-        <p style="font-size:64px; font-weight:900; color:#999; letter-spacing:-2px; line-height:1">$100</p>
-        <p style="margin-top:8px">в сутки. Без инфраструктуры, без стандартов, без управляющей компании.</p>
-      </div>
-      <div class="col-box" style="background:#C8A96E">
-        <h3 style="color:rgba(255,255,255,0.6)">С инфраструктурой</h3>
-        <p style="font-size:64px; font-weight:900; color:#fff; letter-spacing:-2px; line-height:1">$500</p>
-        <p style="margin-top:8px; color:rgba(255,255,255,0.85)">в сутки. Отельный стандарт, управляющая компания, высокая заполняемость.</p>
-      </div>
-    </div>
-    <div class="body" style="margin-top:24px; font-size:22px">Разница в 5 раз — при похожих фотографиях.</div>
-  </div>
-  <div class="sp dark">
-    <div class="p-label">Итог</div>
-    <div class="p-quote">×5 к доходу за правильный выбор</div>
-    <div class="p-big">18</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 19 · ЧЕСТНЫЙ ОТБОР
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc dark">
-    <div class="num-label" style="color:rgba(255,255,255,0.3)">Главный навык</div>
-    <div class="headline white xl">Честный<br>отбор</div>
-    <div class="divider"></div>
-    <div class="body white">Как отличить профессиональный объект от частного сектора, если на фотках они одинаковые? <strong>Это и есть главный навык инвестора в недвижимость на Бали.</strong></div>
-    <div class="hbox dark-hbox" style="margin-top:36px">
-      <p>Опыт на Бали не бывает бесплатным: качественный объект требует опытной команды, правильной земли и управляющей компании.</p>
-    </div>
-  </div>
-  <div class="sp gold">
-    <div class="p-label dark-label">Система</div>
-    <div class="p-quote dark-text lg">«Честный отбор» — три сита</div>
-    <div class="p-big gold-text">19</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 20 · МИКРОИНСТРУМЕНТ
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc cream">
-    <div class="tag">Микроинструмент</div>
-    <div class="headline">Открой карту.<br>5 минут.</div>
-    <div class="divider"></div>
-    <div class="body">Найди любой объект, который рассматриваешь. Что в радиусе пяти минут пешком?</div>
-    <div class="two-col" style="margin-top: 28px">
-      <div class="col-box">
-        <h3>Частный сектор</h3>
-        <p>Петухи. Жилые дома. Нет инфраструктуры. Управляющая компания не возьмёт.</p>
-      </div>
-      <div class="col-box" style="background:#C8A96E">
-        <h3 style="color:rgba(255,255,255,0.6)">Профессиональная</h3>
-        <p style="color:#fff">Кафе, рестораны, магазины. Гость хочет сюда вернуться.</p>
-      </div>
-    </div>
-  </div>
-  <div class="sp dark">
-    <div class="p-label">Первый шаг</div>
-    <div class="p-quote">Карта покажет то, чего не видно на фото</div>
-    <div class="p-big">20</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 21 · ГОСТЬ ХОЧЕТ ВЕРНУТЬСЯ
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc dark">
-    <div class="num-label" style="color:rgba(255,255,255,0.3)">Секрет №1 · Итог</div>
-    <div class="giant-quote white">В нашей вилле<br>нет больших<br>гардеробных.</div>
-    <div class="body white" style="margin-top:40px">Нет сушилок для белья, нет больших парковок. Всё для того, чтобы человек <strong>не обживался</strong>. Как только гость начинает сверлить телевизор — он живёт, а не отдыхает. Он перестаёт платить посуточно.</div>
-  </div>
-  <div class="sp gold">
-    <div class="p-label dark-label">Принцип</div>
-    <div class="p-quote dark-text">Гость должен хотеть вернуться, а не остаться жить</div>
-    <div class="p-big gold-text">21</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 22 · СЕКЦИЯ: СЕКРЕТ №2
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc section-card">
-    <div class="section-num">02</div>
-    <div class="tag">Секрет второй</div>
-    <div class="headline white xl">Земля,<br>которую<br>никто не купит</div>
-    <div class="body white" style="margin-top:32px">Даже если объект красивый — неправильная земля убивает всю инвестицию.</div>
-  </div>
-  <div class="sp dark">
-    <div class="p-label">Секрет №2</div>
-    <div class="p-quote lg">«Земля,<br>которую никто<br>не купит»</div>
-    <div class="p-big">2</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 23 · ЗЕМЛЯ НЕ МОЖЕТ БЫТЬ ДЕШЁВОЙ
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc cream">
-    <div class="tag">Секрет №2</div>
-    <div class="headline">Земля на Бали<br>не может<br>быть дешёвой.</div>
-    <div class="divider"></div>
-    <div class="body">Хорошая земля с <strong>коммерческим зонированием</strong> стоит денег. Дешёвая земля создаёт высокую конкуренцию при перепродаже — её будет сложно продать.</div>
-  </div>
-  <div class="sp dark">
-    <div class="p-label">Первый звонок</div>
-    <div class="p-quote">Дешёвая земля — это не удача. Это предупреждение.</div>
-    <div class="p-big">23</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 24 · ДЕШЁВЫЙ СЫР
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc dark">
-    <div class="num-label" style="color:rgba(255,255,255,0.3)">Секрет №2</div>
-    <div class="giant-quote white">«Дешёвый сыр —<br>только<br>в мышеловке»</div>
-    <div class="body white" style="margin-top:40px">Когда тебе предлагают участок подозрительно дёшево — это не удача. Если бы земля действительно стоила так мало, её уже давно купил бы местный застройщик.</div>
-  </div>
-  <div class="sp gold">
-    <div class="p-label dark-label">Логика</div>
-    <div class="p-quote dark-text">Если это выгодно — почему это ещё продаётся?</div>
-    <div class="p-big gold-text">24</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 25 · ПРОБЛЕМЫ ДЕШЁВОЙ ЗЕМЛИ
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc cream">
-    <div class="tag">Секрет №2 · Детали</div>
-    <div class="headline md">Что скрывают<br>за низкой ценой?</div>
-    <div class="divider"></div>
-    <ul class="sl">
-      <li>Проблемы с документами и некоммерческое назначение</li>
-      <li><strong>Сельхозназначение</strong> — на такой земле нельзя строить здание</li>
-      <li>Нельзя заниматься коммерческой деятельностью</li>
-      <li>При перепродаже никто не купит — ликвидность нулевая</li>
-    </ul>
-  </div>
-  <div class="sp dark">
-    <div class="p-label">Факт</div>
-    <div class="p-quote">Управляющая компания не возьмёт такой объект</div>
-    <div class="p-big">25</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 26 · MICROTOOL — ЗУМ
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc dark">
-    <div class="num-label" style="color:rgba(255,255,255,0.3)">Microtool</div>
-    <div class="headline white">5 минут на Зуме<br>сэкономят<br>годы ошибок.</div>
-    <div class="body white" style="margin-top:32px">Я покажу, как <strong>за 5 минут проверить назначение земли по документам</strong>. В каждой стране есть разные категории земли — и здесь не вся земля разрешает коммерческое строительство.</div>
-    <div class="hbox dark-hbox" style="margin-top:32px">
-      <p>Земля — это фундамент любой инвестиции. Дальше всё зависит от неё.</p>
-    </div>
-  </div>
-  <div class="sp gold">
-    <div class="p-label dark-label">Инструмент</div>
-    <div class="p-quote dark-text">Зум · 5 минут · Проверка земли</div>
-    <div class="p-accent dark-text">Запишись — и узнай</div>
-    <div class="p-big gold-text">26</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 27 · СЕКЦИЯ: СЕКРЕТ №3
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc section-card">
-    <div class="section-num">03</div>
-    <div class="tag">Секрет третий</div>
-    <div class="headline white xl">Стройка<br>без конца</div>
-    <div class="body white" style="margin-top:32px">Даже умные люди теряют деньги на этом этапе. Правильная земля — не гарантия стройки.</div>
-  </div>
-  <div class="sp dark">
-    <div class="p-label">Секрет №3</div>
-    <div class="p-quote lg">«Стройка<br>без конца»</div>
-    <div class="p-big">3</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 28 · ИСТОРИЯ ДОМОГАЦКОГО
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc cream">
-    <div class="tag">Реальный случай</div>
-    <div class="headline md">Гузеева, Собчак, Лолита рекламировали застройщика.</div>
-    <div class="divider"></div>
-    <div class="body">Виллы за $200 000 с видом на океан. <strong>80 человек вложились.</strong> Стройка встала. Застройщик сбежал с Бали. Люди потеряли деньги.</div>
-    <div class="hbox" style="margin-top:32px">
-      <p>Это не история про мошенников. Это история про то, что никто не прошёл три сита «Честного отбора».</p>
-    </div>
-  </div>
-  <div class="sp dark">
-    <div class="p-label">80 инвесторов</div>
-    <div class="p-quote">Никто не задал три правильных вопроса</div>
-    <div class="p-big">28</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 29 · СТРОЙКА НА БАЛИ — КАСКАД
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc dark">
-    <div class="num-label" style="color:rgba(255,255,255,0.3)">Секрет №3</div>
-    <div class="headline white">Стройка на Бали —<br>каскад конфликтов.</div>
-    <div class="body white" style="margin-top:24px">Параллельные процессы не могут идти одновременно. Пока один не закончится — другой не начнётся. <strong>Разрешения, материалы, согласования.</strong></div>
-    <div class="body white" style="margin-top:24px">Каждый этап может зависнуть на недели, если не знаешь, как управлять этим процессом.</div>
-  </div>
-  <div class="sp gold">
-    <div class="p-label dark-label">Реальность</div>
-    <div class="p-quote dark-text">Знание процесса — это тоже деньги</div>
-    <div class="p-big gold-text">29</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 30 · ТРИ СИТА
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc cream">
-    <div class="tag">Честный отбор · Система</div>
-    <div class="headline md">Три сита<br>«Честного отбора»</div>
-    <div class="sieve-row">
-      <div class="sieve-box">
-        <div class="sieve-num">01</div>
-        <div class="sieve-title">Готов учиться</div>
-        <div class="sieve-text">На чужих ошибках — а не на своих деньгах</div>
-      </div>
-      <div class="sieve-box">
-        <div class="sieve-num">02</div>
-        <div class="sieve-title">Готов платить</div>
-        <div class="sieve-text">За качественный актив — без поиска халявы</div>
-      </div>
-      <div class="sieve-box">
-        <div class="sieve-num">03</div>
-        <div class="sieve-title">Готов управлять</div>
-        <div class="sieve-text">Стройкой как процессом — или выбрать надёжного подрядчика</div>
-      </div>
-    </div>
-  </div>
-  <div class="sp dark">
-    <div class="p-label">Система</div>
-    <div class="p-quote">Каждое сито отсеивает тех, кто потеряет деньги</div>
-    <div class="p-big">30</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 31 · 10 ВОПРОСОВ ПОДРЯДЧИКУ
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc dark">
-    <div class="num-label" style="color:rgba(255,255,255,0.3)">Microtool · Секрет №3</div>
-    <div class="headline white md">10 вопросов<br>подрядчику до<br>первого платежа</div>
-    <div class="divider"></div>
-    <div class="body white">Каждый вопрос — с пояснением, примером и конкретной ситуацией, в которой он <strong>спасает твои деньги</strong>. Я подготовил этот список — на созвоне покажу каждый пункт разбором.</div>
-    <div class="hbox dark-hbox" style="margin-top:32px">
-      <p>Это список, после которого ты больше не задашь неправильный вопрос на переговорах.</p>
-    </div>
-  </div>
-  <div class="sp gold">
-    <div class="p-label dark-label">Инструмент</div>
-    <div class="p-quote dark-text">10 вопросов до первого платежа</div>
-    <div class="p-accent dark-text">Получишь на созвоне</div>
-    <div class="p-big gold-text">31</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 32 · СИНТЕЗ: ДВА ТИПА
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc cream">
-    <div class="tag">Синтез · Три сита</div>
-    <div class="headline md">Два типа покупателей. Один результат у каждого.</div>
-    <div class="two-col" style="margin-top:32px">
-      <div class="col-box" style="border-top: 3px solid #EE4444">
-        <h3 style="color:#EE4444">Тип первый</h3>
-        <p>Выбирает по эмоции и картинке. Не прошёл ни одного сита. Итог — потеря денег или недострой.</p>
-      </div>
-      <div class="col-box" style="border-top: 3px solid #C8A96E">
-        <h3>Тип второй</h3>
-        <p>Задаёт три вопроса до подписания. Прошёл три сита. Итог — доходный ликвидный актив.</p>
-      </div>
-    </div>
-    <div class="body" style="margin-top:28px; font-size:22px">Разница — не в деньгах и не в удаче. Разница — в <strong>трёх вопросах до подписания</strong>.</div>
-  </div>
-  <div class="sp dark">
-    <div class="p-label">Развилка</div>
-    <div class="p-quote">Три вопроса разделяют выигрыш и потерю</div>
-    <div class="p-big">32</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 33 · ТИП 1 — СОБЧАК
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc dark">
-    <div class="num-label" style="color:rgba(255,255,255,0.3)">Тип первый</div>
-    <div class="headline white">Собчак приехала<br>на Бали в командировку.</div>
-    <div class="body white" style="margin-top:24px">Увидела красивую виллу в Улувату — <strong>купила за $150 000 прямо на месте</strong>. Вилла ещё строилась. Выбор по эмоции, по картинке.</div>
-    <div class="body white" style="margin-top:20px">Гузеева и Лолита рекламировали застройщика — не проверив, как он строит. <strong>80 человек вложились. Стройка встала.</strong></div>
-  </div>
-  <div class="sp gold">
-    <div class="p-label dark-label">Никто не спросил</div>
-    <div class="p-quote dark-text">— про землю<br>— кто строит<br>— кто управляет</div>
-    <div class="p-big gold-text">33</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 34 · ТИП 2 — ТРИ ВОПРОСА
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc cream">
-    <div class="tag">Тип второй</div>
-    <div class="headline md">Таких историй нет в публичном поле.</div>
-    <div class="body" style="margin-bottom:36px">Умные люди не хвастаются покупками в Instagram. Они <strong>задают три вопроса</strong> до того, как подписать.</div>
-    <div class="divider"></div>
-    <ul class="sl">
-      <li><strong>Какое назначение земли?</strong> Коммерческое или сельхоз?</li>
-      <li><strong>Кто управляет объектом</strong> и сколько он зарабатывает фактически?</li>
-      <li><strong>Какая реальная доходность</strong> — не на бумаге, а по факту?</li>
-    </ul>
-  </div>
-  <div class="sp dark">
-    <div class="p-label">Итог</div>
-    <div class="p-quote">Три вопроса = доходный ликвидный актив</div>
-    <div class="p-big">34</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 35 · ТРИ СИТА → ОДИН РЕЗУЛЬТАТ
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc dark">
-    <div class="num-label" style="color:rgba(255,255,255,0.3)">Синтез</div>
-    <div class="headline white xl">Три сита.<br>Один<br>результат.</div>
-    <div class="body white" style="margin-top:32px">Ты строишь не иллюзию — а <strong>ликвидный актив</strong>. Виллу, которая приносит деньги, а не проблемы. Пассивный доход в долларах — стабильно.</div>
-  </div>
-  <div class="sp gold">
-    <div class="p-label dark-label">Итог системы</div>
-    <div class="p-quote dark-text">Пассивный доход в долларах</div>
-    <div class="p-accent dark-text">Это второй сценарий твоей жизни</div>
-    <div class="p-big gold-text">35</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 36 · ОФФЕР: СОЗВОН
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc cream">
-    <div class="tag">Оффер</div>
-    <div class="headline">Просто созвон<br>на Зуме.</div>
-    <div class="divider"></div>
-    <div class="body">Никакой продажи. Никакого давления. Мы познакомимся, я отвечу на все твои вопросы, разберу твою ситуацию и покажу, <strong>какой объект тебе подходит</strong>.</div>
-    <div class="hbox" style="margin-top:36px">
-      <p>Ты прошёл через «Честный отбор» — теперь ты знаешь, как отличить настоящий объект от красивой картинки. Следующий шаг — личный разбор.</p>
-    </div>
-  </div>
-  <div class="sp dark">
-    <div class="p-label">Шаг</div>
-    <div class="p-quote">Зум · Без продаж · Личный разбор</div>
-    <div class="p-accent">Запись открыта сейчас</div>
-    <div class="p-big">36</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 37 · БОНУС — ВИДЕООБЗОР
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc dark">
-    <div class="num-label" style="color:rgba(255,255,255,0.3)">Бонус</div>
-    <div class="headline white">Подробнейший<br>получасовой<br>видеообзор виллы.</div>
-    <div class="body white" style="margin-top:24px">Строительная команда сняла <strong>каждый угол, каждый метр, каждую деталь</strong> — почему она приносит деньги, а не просто красиво выглядит.</div>
-    <div class="hbox dark-hbox" style="margin-top:32px">
-      <p>Это закрытая информация. Через 24 часа ссылка станет недоступна. Я не раздаю его в открытый доступ.</p>
-    </div>
-  </div>
-  <div class="sp gold">
-    <div class="p-label dark-label">Бонус при записи</div>
-    <div class="p-quote dark-text">30-минутный видеообзор виллы — сразу, до созвона</div>
-    <div class="p-accent dark-text">⏱ Доступен 24 часа</div>
-    <div class="p-big gold-text">37</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 38 · ТРИ ШАГА
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc cream">
-    <div class="tag">Механика</div>
-    <div class="headline md">Всё просто.<br>Три шага.</div>
-    <div class="divider"></div>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-text"><strong>Запишись на созвон на Зум</strong> — займёт 30 секунд</div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-text"><strong>Получи видеообзор виллы в подарок</strong> — до того, как мы вообще поговорим</div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-text"><strong>На созвоне консультируемся</strong> без обязательств и без давления</div>
-      </div>
-    </div>
-  </div>
-  <div class="sp dark">
-    <div class="p-label">Без условий</div>
-    <div class="p-quote">Вилла, которую не стыдно сдавать, ждёт</div>
-    <div class="p-accent">Вопрос — кто первый её заберёт</div>
-    <div class="p-big">38</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 39 · ТРИ ВОПРОСА ДЛЯ ЗАПИСИ
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc dark">
-    <div class="num-label" style="color:rgba(255,255,255,0.3)">Запись</div>
-    <div class="headline white md">Ответь на три вопроса — и я подберу удобное время.</div>
-    <div class="divider"></div>
-    <ul class="sl white-list" style="margin-top:8px">
-      <li><strong>Какой бюджет и сроки</strong> ты рассматриваешь?</li>
-      <li><strong>Формат:</strong> под сдачу, для себя или и то, и другое?</li>
-      <li><strong>Что уже смотрел</strong> и что смущает или останавливает?</li>
-    </ul>
-    <div class="body white" style="margin-top:32px; font-size:22px">10 минут — и ты получаешь личную консультацию с доступом к закрытому видео.</div>
-  </div>
-  <div class="sp gold">
-    <div class="p-label dark-label">Результат</div>
-    <div class="p-quote dark-text">Личная стратегия + закрытый видеообзор</div>
-    <div class="p-accent dark-text">За 10 минут</div>
-    <div class="p-big gold-text">39</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 40 · ВТОРОЙ СЦЕНАРИЙ ЖИЗНИ
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc cream">
-    <div class="tag">Закрытие</div>
-    <div class="headline">Вот и всё.</div>
-    <div class="body" style="margin-bottom:32px">Два видео. Три сита <strong>«Честного отбора»</strong>. Теперь ты знаешь, на что смотреть при покупке виллы на Бали, чтобы не потерять деньги.</div>
-    <div class="hbox">
-      <p>Недвижимость на Бали — это не про бетон и не про окупаемость. Это <strong>второй сценарий твоей жизни</strong>. И единственное, что может тебе его закрыть — неправильный проводник.</p>
-    </div>
-    <div class="author-block" style="margin-top:40px">
-      <div class="author-dot">А</div>
-      <div>
-        <div class="author-name">Александр Дормидонов</div>
-        <div class="author-title">Застройщик · Бали · Инвестиционная недвижимость</div>
-      </div>
-    </div>
-  </div>
-  <div class="sp dark">
-    <div class="p-label">Итог</div>
-    <div class="p-quote lg">Второй сценарий твоей жизни</div>
-    <div class="p-accent">Начни с правильного проводника</div>
-    <div class="p-big">40</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════
-     SLIDE 41 · ФИНАЛ
-═══════════════════════════════════════ -->
-<div class="slide">
-  <div class="sc dark" style="background:#0A0A0A; justify-content: center; align-items: flex-start;">
-    <div class="tag" style="margin-bottom:48px">Честный отбор</div>
-    <div class="headline white xxl" style="line-height:1; margin-bottom:48px">Поехали.</div>
-    <div class="divider"></div>
-    <div class="body white" style="font-size:24px; max-width:800px">Три сита. Правильный объект. Стабильный доход в долларах.<br>Второй сценарий твоей жизни — вот что такое недвижимость на Бали.</div>
-    <div style="margin-top:60px; display:flex; flex-direction:column; gap:12px">
-      <div style="font-size:14px; color:rgba(255,255,255,0.3); letter-spacing:3px; text-transform:uppercase">Александр Дормидонов</div>
-      <div style="font-size:14px; color:rgba(255,255,255,0.2); letter-spacing:2px; text-transform:uppercase">Застройщик · Бали · 6+ лет</div>
-    </div>
-  </div>
-  <div class="sp dark" style="background:#C8A96E">
-    <div class="p-label dark-label">Конец серии</div>
-    <div class="p-quote dark-text xl" style="font-size:80px; font-weight:900; color:#0A0A0A; line-height:0.95">Бали.</div>
-    <div class="p-accent dark-text" style="font-size:24px; margin-top:24px">Второй сценарий<br>твоей жизни</div>
-    <div class="p-big gold-text" style="font-size:300px; opacity:0.06; bottom:20px">∞</div>
-  </div>
-</div>
-
-
-</div><!-- end presentation -->
-</div><!-- end wrapper -->
-
-<!-- ── NAVIGATION ── -->
+<!-- NAV -->
 <div class="nav">
-  <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">&#8592;</button>
-  <span class="nav-counter" id="counter">1 / 41</span>
-  <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">&#8594;</button>
+  <button class="nb" onclick="go(-1)">&#8592;</button>
+  <span class="nc" id="nc">1 / 41</span>
+  <button class="nb" onclick="go(1)">&#8594;</button>
 </div>
 
 <script>
-let current = 0;
-const slides = document.querySelectorAll('.slide');
-const total = slides.length;
-const counter = document.getElementById('counter');
-const progress = document.getElementById('progress');
+let cur=0;
+const slides=document.querySelectorAll('.s');
+const total=slides.length;
+const nc=document.getElementById('nc');
+const pf=document.getElementById('pf');
 
-function goTo(n) {
-  slides[current].classList.remove('active');
-  current = Math.max(0, Math.min(n, total - 1));
-  slides[current].classList.add('active');
-  counter.textContent = (current + 1) + ' / ' + total;
-  progress.style.width = ((current + 1) / total * 100) + '%';
+function goTo(n){
+  slides[cur].classList.remove('on');
+  cur=Math.max(0,Math.min(n,total-1));
+  slides[cur].classList.add('on');
+  nc.textContent=(cur+1)+' / '+total;
+  pf.style.width=((cur+1)/total*100)+'%';
 }
+function go(d){goTo(cur+d);}
 
-function changeSlide(dir) { goTo(current + dir); }
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') changeSlide(1);
-  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') changeSlide(-1);
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' ')go(1);
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp')go(-1);
 });
 
-// Touch swipe
-let touchStartX = 0;
-document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
-document.addEventListener('touchend', e => {
-  const dx = e.changedTouches[0].clientX - touchStartX;
-  if (Math.abs(dx) > 50) changeSlide(dx < 0 ? 1 : -1);
+let tx=0;
+document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;});
+document.addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-tx;
+  if(Math.abs(dx)>50)go(dx<0?1:-1);
 });
 
-// Scale to fit window
-function scalePresentation() {
-  const w = window.innerWidth;
-  const h = window.innerHeight;
-  const scaleX = w / 1920;
-  const scaleY = h / 1080;
-  const s = Math.min(scaleX, scaleY);
-  const ox = (w - 1920 * s) / 2;
-  const oy = (h - 1080 * s) / 2;
-  const wrapper = document.getElementById('wrapper');
-  wrapper.style.transform = `translate(${ox}px, ${oy}px) scale(${s})`;
+function scale(){
+  const s=Math.min(window.innerWidth/1920,window.innerHeight/1080);
+  const ox=(window.innerWidth-1920*s)/2;
+  const oy=(window.innerHeight-1080*s)/2;
+  document.getElementById('wrapper').style.transform=`translate(${ox}px,${oy}px) scale(${s})`;
 }
-
-window.addEventListener('resize', scalePresentation);
-scalePresentation();
-
-// Init progress
-progress.style.width = (1 / total * 100) + '%';
+window.addEventListener('resize',scale);
+scale();
+pf.style.width=(1/total*100)+'%';
 </script>
 </body>
 </html>
