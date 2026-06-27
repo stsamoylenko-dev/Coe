@@ -5,6 +5,7 @@ import AppShell from '@/components/layout/AppShell'
 import WarriorCard from '@/components/warrior/WarriorCard'
 import FigurineView from '@/components/warrior/FigurineView'
 import StickerPackPanel from '@/components/warrior/StickerPackPanel'
+import ClusterPortfolioPanel from '@/components/warrior/ClusterPortfolioPanel'
 import LoadingRune from '@/components/ui/LoadingRune'
 import GlassCard from '@/components/ui/GlassCard'
 import { useDomainsStore } from '@/store/domainsStore'
@@ -159,6 +160,14 @@ export default function DashboardPage() {
             <StickerPackPanel
               warrior={warrior}
               allDomains={domains?.domains ?? []}
+            />
+
+            {/* Cluster portfolio section */}
+            <ClusterPortfolioPanel
+              domains4N={[
+                ...(domains?.primary4N ? [domains.primary4N] : []),
+                ...(domains?.secondary4Ns ?? []),
+              ]}
             />
           </div>
         )}

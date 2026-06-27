@@ -4,14 +4,22 @@ import { calculateStats } from '@/lib/warrior/statsCalculator'
 import type { WarriorData } from './warriorStore'
 import type { WalletDomainsResult } from '@/lib/ton/types'
 
-// Demo domain set that shows off all features
+// Demo domain set that shows off all features including cluster portfolio
 const DEMO_DOMAINS: WalletDomainsResult = {
   primary4N: {
     raw: '1221.ton', label: '1221', length: 4, is4N: true,
     address: 'EQDemo1221', isPremium: true, forSale: false,
   },
   secondary4Ns: [
+    // Century cluster 12XX: 1221, 1234, 1212
+    { raw: '1234.ton', label: '1234', length: 4, is4N: true, address: 'EQDemo1234', isPremium: true, forSale: false },
+    { raw: '1212.ton', label: '1212', length: 4, is4N: true, address: 'EQDemo1212', isPremium: true, forSale: false },
+    // Pattern cluster BERSERKER: 7777, 5555
     { raw: '7777.ton', label: '7777', length: 4, is4N: true, address: 'EQDemo7777', isPremium: true, forSale: false },
+    { raw: '5555.ton', label: '5555', length: 4, is4N: true, address: 'EQDemo5555', isPremium: true, forSale: false },
+    // Zero Legion: 0042, 0100
+    { raw: '0042.ton', label: '0042', length: 4, is4N: true, address: 'EQDemo0042', isPremium: true, forSale: false },
+    { raw: '0100.ton', label: '0100', length: 4, is4N: true, address: 'EQDemo0100', isPremium: true, forSale: false },
   ],
   armors: [
     { raw: 'valhalla.ton',  label: 'valhalla',  length: 8,  is4N: false, address: 'EQDemoA', isPremium: false, forSale: false },
@@ -53,7 +61,7 @@ export const useDemoStore = create<DemoState>(set => ({
       warriorClass,
       stats,
       armorLayers,
-      mana:       2 * 1000,
+      mana:       (1 + DEMO_DOMAINS.secondary4Ns.length) * 1000,
       armorCount: armorLayers.length,
     }
 
